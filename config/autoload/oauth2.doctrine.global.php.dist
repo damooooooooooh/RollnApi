@@ -131,7 +131,7 @@ return array(
                 ),
 
                 'ZF\OAuth2\Mapper\AuthorizationCode' => array(
-                    'entity' => 'ZF\OAuth2\Entity\AuthorizationCode',
+                    'entity' => 'ZF\OAuth2\Entity\Code',
                     'mapping' => array(
                         'authorization_code' => array(
                             'type' => 'field',

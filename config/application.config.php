@@ -34,12 +34,7 @@ return array(
             './vendor'
         ),
         'config_glob_paths' => array(
-            '/Users/tom_anderson/Projects/oauth2/config/autoload/{,*.}{global,local}.php'
+            'config/autoload/{,*.}{global,local}.php'
         ),
-        'config_cache_key' => 'application.config.cache',
-        'config_cache_enabled' => false,
-        'module_map_cache_key' => 'application.module.cache',
-        'module_map_cache_enabled' => false,
-        'cache_dir' => 'data/cache/'
     )
 );

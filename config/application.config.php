@@ -27,6 +27,9 @@ return array(
         'DoctrineORMModule',
         'Phpro\\DoctrineHydrationModule',
         'ZF\\Apigility\\Doctrine\\Server',
+        'ZfcBase',
+        'ZfcUser',
+        'ZfcUserDoctrineORM'
     ),
     'module_listener_options' => array(
         'module_paths' => array(

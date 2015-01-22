@@ -11,4 +11,59 @@
  * credentials from accidentally being committed into version control.
  */
 
-return array();
+error_reporting(E_ALL);
+ini_set('display_errors', 1);
+
+date_default_timezone_set('utc');
+
+$ormParams = [
+    'database'  => 'oauth2',
+    'username'  => 'root',
+    'password'  => '',
+    'hostname'  => 'localhost',
+    'port'  => '3306',
+];
+
+/** -----End User Edit-------------------------------------- **/
+
+return array(
+    /**
+     * Doctrine configuration for sqlite
+     */
+    'doctrine' => [
+        'connection' => [
+            'orm_default' => [
+                'driverClass' => 'Doctrine\DBAL\Driver\PDOSqlite\Driver',
+                'params' => [
+                    'path' => __DIR__ . '/../../data/sqlite.db',
+                ],
+            ],
+        ],
+    ],
+
+    'view_manager' => array(
+        'display_not_found_reason' => true,
+        'display_exceptions'       => true,
+    ),
+
+    /**
+     * Doctrine configuration for MySQL or Maria DB
+     */
+    /**
+    'doctrine' => array(
+        'connection' => array(
+            'orm_default' => array(
+                'driverClass' => 'Doctrine\DBAL\Driver\PDOMySql\Driver',
+                'params' => array(
+                    'database'  => $ormParams['database'],
+                    'user'  => $ormParams['username'],
+                    'password'  => $ormParams['password'],
+                    'host'  => $ormParams['hostname'],
+                    'dbname'  => $ormParams['database'],
+                    'port'  => $ormParams['port'],
+                ),
+            ),
+        ),
+    ),
+    */
+);

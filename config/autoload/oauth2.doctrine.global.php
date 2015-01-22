@@ -12,7 +12,7 @@ return array(
             // Dynamically map the user_entity to the client_entity
             'dynamic_mapping' => array(
                 'user_entity' => array(
-                    'entity' => 'ZF\OAuth2\Entity\User',
+                    'entity' => 'RollNApi\Entity\User',
                     'field' => 'user',
                 ),
                 'client_entity' => array(
@@ -22,7 +22,7 @@ return array(
             ),
             'mapping' => array(
                 'ZF\OAuth2\Mapper\User' => array(
-                    'entity' => 'ZF\OAuth2\Entity\User',
+                    'entity' => 'RollNApi\Entity\User',
                     'mapping' => array(
                         'user_id' => array(
                             'type' => 'field',

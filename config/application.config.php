@@ -29,7 +29,9 @@ return array(
         'ZF\\Apigility\\Doctrine\\Server',
         'ZfcBase',
         'ZfcUser',
-        'ZfcUserDoctrineORM'
+        'ZfcUserDoctrineORM',
+        'DoctrineDataFixtureModule',
+        'RollNApi'
     ),
     'module_listener_options' => array(
         'module_paths' => array(
@@ -38,6 +40,6 @@ return array(
         ),
         'config_glob_paths' => array(
             'config/autoload/{,*.}{global,local}.php'
-        ),
+        )
     )
 );

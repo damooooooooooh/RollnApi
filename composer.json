@@ -17,7 +17,7 @@
         "issues": "https://github.com/zfcampus/zf-apigility-skeleton/issues"
     },
     "config": {
-    	"process-timeout": 5000
+        "process-timeout": 5000
     },
     "extra": {
         "branch-alias": {
@@ -25,12 +25,23 @@
             "dev-develop": "1.1-dev"
         }
     },
+    "repositories": [
+        {
+            "type": "git",
+            "url": "https://github.com/TomHAnderson/zf-oauth2.git"
+        }
+    ],
     "require": {
         "php": ">=5.3.23",
         "zendframework/zendframework": ">=2.3.2,<3.0.0",
         "zfcampus/zf-apigility": "~1.0",
         "zfcampus/zf-apigility-documentation": "~1.0",
-        "zfcampus/zf-development-mode": "~2.0"
+        "zfcampus/zf-development-mode": "~2.0",
+        "doctrine/doctrine-orm-module": "0.*",
+        "zfcampus/zf-oauth2": "dev-master#662b0ddc75cb8ff8eb51de813cf4c8addbd9fbb8",
+        "zfcampus/zf-apigility-doctrine": "0.3.*",
+        "zf-commons/zfc-user-doctrine-orm": "~1.0",
+        "hounddog/doctrine-data-fixture-module": "0.0.*"
     },
     "require-dev": {
         "zendframework/zftool": "dev-master",

@@ -67,9 +67,10 @@ return array(
                         'user_id' => array(
                             'type' => 'relation',
                             'name' => 'user',
-                            'entity_field_name' => 'clientId',
+                            'entity_field_name' => 'id',
                             'entity' => 'ZF\OAuth2\Entity\User',
                             'datatype' => 'integer',
+                            'allowNull' => true,
                         ),
                     ),
                 ),

@@ -8,6 +8,9 @@ namespace Application;
 
 use Zend\Mvc\ModuleRouteListener;
 use Zend\Mvc\MvcEvent;
+use OAuth2\Request as OAuth2Request;
+use OAuth2\Response as OAuth2Response;
+use OAuth2\Server as OAuth2Server;
 
 class Module
 {
@@ -16,6 +19,15 @@ class Module
         $eventManager        = $e->getApplication()->getEventManager();
         $moduleRouteListener = new ModuleRouteListener();
         $moduleRouteListener->attach($eventManager);
+        $eventManager->attach(MvcEvent::EVENT_DISPATCH, array($this, 'onDispatch'));
+    }
+
+    public function onDispatch(MvcEvent $e) {
+        $server = $e->getApplication()->getServiceManager()->get('ZF\OAuth2\Service\OAuth2Server');
+
+        if (!$server->verifyResourceRequest(OAuth2Request::createFromGlobals())) {
+            throw new \Exception('Not Authorized');
+        }
     }
 
     public function getConfig()

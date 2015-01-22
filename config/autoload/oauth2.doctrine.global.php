@@ -74,7 +74,7 @@ return array(
                             'type' => 'relation',
                             'name' => 'user',
                             'entity_field_name' => 'id',
-                            'entity' => 'ZF\OAuth2\Entity\User',
+                            'entity' => 'RollNApi\Entity\User',
                             'datatype' => 'integer',
                             'allowNull' => true,
                         ),

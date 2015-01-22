@@ -60,6 +60,18 @@ class User implements UserInterface
         $this->client = new \Doctrine\Common\Collections\ArrayCollection();
     }
 
+    public function getArrayCopy()
+    {
+        return array(
+            'id' => $this->getId(),
+            'username' => $this->getUsername(),
+            'email' => $this->getEmail(),
+            'displayName' => $this->getDisplayName(),
+            'password' => $this->getPassword(),
+            'state' => $this->getState(),
+        );
+    }
+
     /**
      * Set username
      *

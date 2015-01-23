@@ -22,6 +22,7 @@ return array(
     'zf-apigility-doctrine-query-provider' => array(
         'invokables' => array(
             'user_album_default' => 'RollNApi\Query\Provider\UserAlbum\DefaultQueryProvider',
+            'user_album_fetch_all' => 'RollNApi\Query\Provider\UserAlbum\FetchAllQueryProvider',
         )
     ),
     'zf-apigility-doctrine-query-create-filter' => array(
@@ -226,6 +227,7 @@ return array(
                 'hydrator' => 'RollNApi\\V1\\Rest\\UserAlbum\\UserAlbumHydrator',
                 'query_providers' => array(
                     'default' => 'user_album_default',
+                    'fetch_all' => 'user_album_fetch_all',
                 ),
                 'query_create_filter' => 'user_album',
             ),

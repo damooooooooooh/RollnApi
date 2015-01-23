@@ -5,12 +5,13 @@ namespace RollNApi;
 use ZF\Apigility\Provider\ApigilityProviderInterface;
 use Zend\Console\Console;
 use Zend\Mvc\MvcEvent;
+use OAuth2\Request as OAuth2Request;
 
 class Module implements ApigilityProviderInterface
 {
-    public function onBootstra(MvcEvent $e)
+    public function onBootstrap(MvcEvent $e)
     {
-        $eventManager        = $e->getApplication()->getEventManager();
+        $eventManager = $e->getApplication()->getEventManager();
         $eventManager->attach(MvcEvent::EVENT_DISPATCH, array($this, 'onDispatch'));
     }
 

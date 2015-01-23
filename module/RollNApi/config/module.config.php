@@ -1,5 +1,10 @@
 <?php
 return array(
+    'service_manager' => array(
+        'invokables' => array(
+            'hydrator_filter_exclude_user' => 'RollNApi\Hydrator\Filter\ExcludeUser',
+        ),
+    ),
     'data-fixture' => array(
         'RollNApi_fixture' => __DIR__ . '/../src/RollNApi/Fixture',
     ),
@@ -254,6 +259,12 @@ return array(
             'by_value' => true,
             'strategies' => array(),
             'use_generated_hydrator' => true,
+            'filters' => array(
+                'exclude_user' => array(
+                    'condition' => 'and', //optional, default: FilterComposite::CONDITION_OR,
+                    'filter' => 'hydrator_filter_exclude_user', // a name in the Service Manager
+                ),
+            ),
         ),
     ),
 );

@@ -78,3 +78,24 @@ Change the just-created UserAlbum
 ```
 echo '{"album":2,"description": "Change Description"}' |  http -f PATCH http://localhost:8083/api/user-album/7 "Authorization: Bearer access_token" "Content-type: application/json"
 ```
+
+Make a filtered query to UserAlbum.  This filter is:
+```
+field: description
+type: eq
+value: %Aoxomoxoa%
+
+http -f GET http://localhost:8083/api/user-album?filter%5B0%5D%5Btype%5D=like&filter%5B0%5D%5Bfield%5D=description&filter%5B0%5D%5Bvalue%5D=%25Aoxomoxoa%25" "Authorization: Bearer access_token"
+```
+
+
+Features
+--------
+
+A default Query Provider is used for UserAlbum so a user can only fetch or update their own UserAlbum.
+
+A FetchAll Query Provider for UserAlbum is used so filters may be applied to a GET request.  See https://github.com/zfcampus/zf-doctrine-querybuilder for details.
+
+A Query Create Filter is used for UserAlbum so the authenticated user is assigned to any new UserAlbum.
+
+A Hydrator Filter is used for UserAlbum so the assigned user entity is not included in results.

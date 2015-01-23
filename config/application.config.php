@@ -26,6 +26,7 @@ return array(
         'DoctrineORMModule',
         'Phpro\\DoctrineHydrationModule',
         'ZF\\Apigility\\Doctrine\\Server',
+        'ZF\\Doctrine\\QueryBuilder',
         'ZfcBase',
         'ZfcUser',
         'ZfcUserDoctrineORM',

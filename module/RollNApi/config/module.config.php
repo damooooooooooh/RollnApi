@@ -24,6 +24,11 @@ return array(
             'user_album_default' => 'RollNApi\Query\Provider\UserAlbum\DefaultQueryProvider',
         )
     ),
+    'zf-apigility-doctrine-query-create-filter' => array(
+        'invokables' => array(
+            'user_album' => 'RollNApi\Query\CreateFilter\UserAlbum',
+        )
+    ),
     'router' => array(
         'routes' => array(
             'roll-n-api.rest.doctrine.artist' => array(
@@ -222,6 +227,7 @@ return array(
                 'query_providers' => array(
                     'default' => 'user_album_default',
                 ),
+                'query_create_filter' => 'user_album',
             ),
         ),
     ),

@@ -19,15 +19,6 @@ class Module
         $eventManager        = $e->getApplication()->getEventManager();
         $moduleRouteListener = new ModuleRouteListener();
         $moduleRouteListener->attach($eventManager);
-        $eventManager->attach(MvcEvent::EVENT_DISPATCH, array($this, 'onDispatch'));
-    }
-
-    public function onDispatch(MvcEvent $e) {
-        $server = $e->getApplication()->getServiceManager()->get('ZF\OAuth2\Service\OAuth2Server');
-
-        if (!$server->verifyResourceRequest(OAuth2Request::createFromGlobals())) {
-            throw new \Exception('Not Authorized');
-        }
     }
 
     public function getConfig()

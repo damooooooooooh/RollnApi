@@ -82,7 +82,7 @@ echo '{"album":2,"description": "Change Description"}' |  http -f PATCH http://l
 Make a filtered query to UserAlbum.  This filter is:
 ```
 field: description
-type: eq
+type: like
 value: %Aoxomoxoa%
 
 http -f GET http://localhost:8083/api/user-album?filter%5B0%5D%5Btype%5D=like&filter%5B0%5D%5Bfield%5D=description&filter%5B0%5D%5Bvalue%5D=%25Aoxomoxoa%25" "Authorization: Bearer access_token"

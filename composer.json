@@ -38,7 +38,7 @@
         "zfcampus/zf-apigility-documentation": "~1.0",
         "zfcampus/zf-development-mode": "~2.0",
         "doctrine/doctrine-orm-module": "0.*",
-        "zfcampus/zf-oauth2": "dev-master#662b0ddc75cb8ff8eb51de813cf4c8addbd9fbb8",
+        "zfcampus/zf-oauth2": "dev-master#3365534c075395d4589f37098318d4b9a8f6f1ac",
         "zfcampus/zf-apigility-doctrine": "0.3.*",
         "zf-commons/zfc-user-doctrine-orm": "~1.0",
         "hounddog/doctrine-data-fixture-module": "0.0.*",

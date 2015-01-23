@@ -11,7 +11,7 @@ class Module implements ApigilityProviderInterface
 {
     public function onBootstrap(MvcEvent $e)
     {
-        $eventManager        = $e->getApplication()->getEventManager();
+        $eventManager = $e->getApplication()->getEventManager();
         $eventManager->attach(MvcEvent::EVENT_DISPATCH, array($this, 'onDispatch'));
     }
 

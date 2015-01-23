@@ -7,8 +7,8 @@ Apigility with Doctrine OAuth2 Server and Entities
 This is written for PHP 5.3 but these instructions assume 5.4 or greater.
 
 ```
-git clone git@github.com:TomHAnderson/apigility-doctrine-skeleton bat
-cd bat
+git clone git@github.com:TomHAnderson/apigility-doctrine-skeleton
+cd apigility-doctrine-skeleton
 cp config/autoload/local.php.dist config/autoload/local.php
 ./composer.phar install
 php public/index.php orm:schema-tool:create
@@ -37,7 +37,7 @@ pass: client1password
 
 user: client2
 pass: client2password
-(odd numbered UserAlbums 2, 4, 6)
+(even numbered UserAlbums 2, 4, 6)
 ```
 
 

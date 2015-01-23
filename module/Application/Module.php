@@ -8,9 +8,6 @@ namespace Application;
 
 use Zend\Mvc\ModuleRouteListener;
 use Zend\Mvc\MvcEvent;
-use OAuth2\Request as OAuth2Request;
-use OAuth2\Response as OAuth2Response;
-use OAuth2\Server as OAuth2Server;
 
 class Module
 {

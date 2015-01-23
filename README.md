@@ -1,114 +1,80 @@
-Apigility Skeleton Application
-==============================
+Roll'n API
+==========
 
-Requirements
-------------
-  
-Please see the [composer.json](composer.json) file.
+Apigility with Doctrine OAuth2 Server and Entities
+--------------------------------------------------
 
-Installation
-------------
+This is written for PHP 5.3 but these instructions assume 5.4 or greater.
 
-### Via release tarball
-
-Grab the latest release via the [Apigility website](http://apigility.org/)
-and/or the [releases page](https://github.com/zfcampus/zf-apigility-skeleton/releases).
-At the time of this writing, that URI is:
-
-- https://github.com/zfcampus/zf-apigility-skeleton/releases/download/0.9.1/zf-apigility-skeleton-0.9.1.tgz
-
-Untar it:
-
-```bash
-tar xzf zf-apigility-skeleton-0.9.1.tgz
+```
+git clone git@github.com:TomHAnderson/apigility-doctrine-skeleton bat
+cd bat
+cp config/autoload/local.php.dist config/autoload/local.php
+./composer.phar install
+php public/index.php orm:schema-tool:create
+php public/index.php data-fixture:import
+php -S localhost:8083 -t public/ public/index.php
 ```
 
-### Via Composer (create-project)
 
-You can use the `create-project` command from [Composer](http://getcomposer.org/)
-to create the project in one go:
+Data
+----
 
-```bash
-curl -s https://getcomposer.org/installer | php --
-php composer.phar create-project -sdev zfcampus/zf-apigility-skeleton path/to/install
+There are three endpoints and three data tables.  The Artist has no references.  The Album has a refernce to Artist.  The UserAlbum has a reference to Album and a User.
+
+The endpoints are
+```
+/api/artist
+/api/album
+/api/user-album
 ```
 
-### Via Git (clone)
+There are two clients registerd.
+```
+user: cilent1
+pass: client1password
+(odd numbered UserAlbums 1, 3, 5)
 
-First, clone the repository:
-
-```bash
-git clone https://github.com/zfcampus/zf-apigility-skeleton.git # optionally, specify the directory in which to clone
-cd path/to/install
+user: client2
+pass: client2password
+(odd numbered UserAlbums 2, 4, 6)
 ```
 
-At this point, you need to use [Composer](https://getcomposer.org/) to install
-dependencies. Assuming you already have Composer:
 
-```bash
-composer.phar install
+Run
+---
+
+Test the service.  This call will return an (ugly) exception stating 'Not Authorized':
+```
+http -f GET http://localhost:8083/api/artist
 ```
 
-### All methods
-
-Once you have the basic installation, you need to put it in development mode:
-
-```bash
-cd path/to/install
-php public/index.php development enable # put the skeleton in development mode
+Authenticate with OAuth2
+```
+http --auth client1:client1password -f POST http://localhost:8083/oauth grant_type=client_credentials
 ```
 
-Now, fire it up! Do one of the following:
-
-- Create a vhost in your web server that points the DocumentRoot to the
-  `public/` directory of the project
-- Fire up the built-in web server in PHP (5.4.8+) (**note**: do not use this for
-  production!)
-
-In the latter case, do the following:
-
-```bash
-cd path/to/install
-php -S 0.0.0.0:8080 -t public public/index.php
+Using the access_token from the Authentication replace it with your token and run:
+```
+http -f GET http://localhost:8083/api/artist "Authorization: Bearer access_token"
 ```
 
-You can then visit the site at http://localhost:8080/ - which will bring up a
-welcome page and the ability to visit the dashboard in order to create and
-inspect your APIs.
-
-### NOTE ABOUT USING THE PHP BUILT-IN WEB SERVER
-
-PHP's built-in web server did not start supporting the `PATCH` HTTP method until
-5.4.8. Since the admin API makes use of this HTTP method, you must use a version
-&gt;= 5.4.8 when using the built-in web server.
-
-### NOTE ABOUT USING APACHE
-
-Apache forbids the character sequences `%2F` and `%5C` in URI paths. However, the Apigility Admin
-API uses these characters for a number of service endpoints. As such, if you wish to use the
-Admin UI and/or Admin API with Apache, you will need to configure your Apache vhost/project to
-allow encoded slashes:
-
-```apache
-AllowEncodedSlashes On
+User specific handling.  Run this to see your client has three UserAlbums:
+```
+http -f GET http://localhost:8083/api/user-album "Authorization: Bearer access_token"
 ```
 
-This change will need to be made in your server's vhost file (it cannot be added to `.htaccess`).
+Create a new UserAlbum and Roll'n API will assign the user to the authenticated user
+```
+echo '{"album":1,"description": "User Album from POST"}' |  http -f POST http://localhost:8083/api/user-album "Authorization: Bearer access_token" "Content-type: application/json"
+```
 
-### NOTE ABOUT OPCACHE
+Run the UserAlbum again to see the new UserAlbum
+```
+http -f GET http://localhost:8083/api/user-album "Authorization: Bearer access_token"
+```
 
-**Disable all opcode caches when running the admin!**
-
-The admin cannot and will not run correctly when an opcode cache, such as APC or
-OpCache, is enabled. Apigility does not use a database to store configuration;
-instead, it uses PHP configuration files. Opcode caches will cache these files
-on first load, leading to inconsistencies as you write to them, and will
-typically lead to a state where the admin API and code become unusable.
-
-The admin is a **development** tool, and intended for use a development
-environment. As such, you should likely disable opcode caching, regardless.
-
-When you are ready to deploy your API to **production**, however, you can
-disable development mode, thus disabling the admin interface, and safely run an
-opcode cache again. Doing so is recommended for production due to the tremendous
-performance benefits opcode caches provide.
+Change the just-created UserAlbum
+```
+echo '{"album":2,"description": "Change Description"}' |  http -f PATCH http://localhost:8083/api/user-album/7 "Authorization: Bearer access_token" "Content-type: application/json"
+```

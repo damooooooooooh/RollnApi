@@ -27,7 +27,7 @@ return array(
     ),
     'zf-apigility-doctrine-query-create-filter' => array(
         'invokables' => array(
-            'user_album' => 'RollNApi\Query\CreateFilter\UserAlbum',
+            'user_album' => 'RollNApi\Query\CreateFilter\UserAlbumCreateFilter',
         )
     ),
     'router' => array(

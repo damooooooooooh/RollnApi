@@ -8,7 +8,7 @@ use Zend\ServiceManager\ServiceLocatorInterface;
 use ZF\ApiProblem\ApiProblem;
 use ZF\Rest\ResourceEvent;
 
-class UserAlbum extends DefaultCreateFilter implements ServiceLocatorAwareInterface
+class UserAlbumCreateFilter extends DefaultCreateFilter implements ServiceLocatorAwareInterface
 {
     /**
      * @var ServiceLocatorInterface

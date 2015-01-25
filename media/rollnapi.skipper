@@ -6,7 +6,7 @@
       <field name="clientId" type="string" uuid="5902288a-0d1f-44c0-a02c-19bc92de37b1"/>
       <field name="secret" type="string" uuid="1b0c7264-2fce-4217-9011-ddc42ee9afd2"/>
       <field name="redirectUri" type="text" uuid="e419d490-b93f-4a8b-b21b-03f3fc6a75ae"/>
-      <field name="grantType" type="string" uuid="475c289c-1057-4314-a146-955108acb56a"/>
+      <field name="grantType" type="array" uuid="475c289c-1057-4314-a146-955108acb56a"/>
       <field name="clientScope" type="text" uuid="9131a4c2-1f02-4ceb-9951-38fc30d8c245"/>
       <index name="idx_clientId_unique" unique="true">
         <index-field name="clientId"/>

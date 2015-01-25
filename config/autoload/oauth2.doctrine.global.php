@@ -60,10 +60,10 @@ return array(
                             'name' => 'redirectUri',
                             'datatype' => 'text',
                         ),
-                        'grant_type' => array(
+                        'grant_types' => array(
                             'type' => 'field',
                             'name' => 'grantType',
-                            'datatype' => 'string',
+                            'datatype' => 'array',
                         ),
                         'scope' => array(
                             'type' => 'field',

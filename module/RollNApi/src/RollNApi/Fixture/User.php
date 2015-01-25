@@ -6,6 +6,7 @@ use Doctrine\Common\Persistence\ObjectManager;
 use Doctrine\Common\DataFixtures\FixtureInterface;
 use RollNApi\Entity;
 use ZF\OAuth2\Entity\Client as OAuth2Client;
+use ZF\OAuth2\Entity\Jwt as OAuth2Jwt;
 use Zend\Crypt\Password\Bcrypt;
 
 class User implements FixtureInterface
@@ -28,9 +29,23 @@ class User implements FixtureInterface
         $client1 = new OAuth2Client();
         $client1->setClientId('client1');
         $client1->setSecret($bcrypt->create('client1password'));
+        $client1->setGrantType(array(
+            'urn:ietf:params:oauth:grant-type:jwt-bearer',
+            'password',
+            'authorization_code',
+            'client_credentials',
+            'refresh_token'
+        ));
         $client1->setUser($user1);
 
         $manager->persist($client1);
+
+        $jwt1 = new OAuth2Jwt();
+        $jwt1->setSubject('user1');
+        $jwt1->setPublicKey(file_get_contents(__DIR__ . '/../../../../../media/pubkey.pem'));
+        $jwt1->setClient($client1);
+
+        $manager->persist($jwt1);
 
         $user2 = new Entity\User();
         $user2->setUsername('user2');
@@ -43,6 +58,7 @@ class User implements FixtureInterface
         $client2 = new OAuth2Client();
         $client2->setClientId('client2');
         $client2->setSecret($bcrypt->create('client2password'));
+        $client2->setGrantType(array('client_credentials', 'refresh_token'));
         $client2->setUser($user2);
 
         $manager->persist($client2);

@@ -6,6 +6,8 @@ use ZF\Apigility\Doctrine\Server\Query\Provider\DefaultOrm;
 use Zend\ServiceManager\ServiceLocatorAwareInterface;
 use Zend\ServiceManager\ServiceLocatorInterface;
 use ZF\Rest\ResourceEvent;
+use OAuth2\Request as OAuth2Request;
+use ZF\ApiProblem\ApiProblem;
 
 class FetchAllQueryProvider extends DefaultOrm implements ServiceLocatorAwareInterface
 {
@@ -39,6 +41,14 @@ class FetchAllQueryProvider extends DefaultOrm implements ServiceLocatorAwareInt
 
     public function createQuery(ResourceEvent $event, $entityClass, $parameters)
     {
+        $server = $this->getServiceLocator()->getServiceLocator()->get('ZF\OAuth2\Service\OAuth2Server');
+        if (!$server->verifyResourceRequest(OAuth2Request::createFromGlobals(), $response = null, $scope = null)) {
+            return new ApiProblem(401, "Access to UserAlbum FetchAll requires scope 'asdf'");
+        }
+
+        die('authorized');
+
+
         $request = $this->getServiceLocator()->getServiceLocator()->get('Request')->getQuery()->toArray();
         $identity = $event->getIdentity()->getAuthenticationIdentity();
         $userId = $identity['user_id'];

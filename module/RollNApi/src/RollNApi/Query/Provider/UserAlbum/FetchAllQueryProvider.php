@@ -42,12 +42,9 @@ class FetchAllQueryProvider extends DefaultOrm implements ServiceLocatorAwareInt
     public function createQuery(ResourceEvent $event, $entityClass, $parameters)
     {
         $server = $this->getServiceLocator()->getServiceLocator()->get('ZF\OAuth2\Service\OAuth2Server');
-        if (!$server->verifyResourceRequest(OAuth2Request::createFromGlobals(), $response = null, $scope = null)) {
-            return new ApiProblem(401, "Access to UserAlbum FetchAll requires scope 'asdf'");
+        if ( ! $server->verifyResourceRequest(OAuth2Request::createFromGlobals(), $response = null, $scope = 'scope2')) {
+           return new ApiProblem(401, "Access to UserAlbum FetchAll requires scope 'scope2'");
         }
-
-        die('authorized');
-
 
         $request = $this->getServiceLocator()->getServiceLocator()->get('Request')->getQuery()->toArray();
         $identity = $event->getIdentity()->getAuthenticationIdentity();

@@ -6,6 +6,7 @@ use Doctrine\Common\Persistence\ObjectManager;
 use Doctrine\Common\DataFixtures\FixtureInterface;
 use RollNApi\Entity;
 use ZF\OAuth2\Entity\Client as OAuth2Client;
+use ZF\OAuth2\Entity\Scope as OAuth2Scope;
 use ZF\OAuth2\Entity\Jwt as OAuth2Jwt;
 use Zend\Crypt\Password\Bcrypt;
 
@@ -17,6 +18,25 @@ class User implements FixtureInterface
 
         $bcrypt = new Bcrypt();
         $bcrypt->setCost(14);
+
+        $scope1 = new OAuth2Scope();
+        $scope1->setScope('scope1');
+        $scope1->setIsDefault(true);
+
+        $manager->persist($scope1);
+
+        $scope2 = new OAuth2Scope();
+        $scope2->setScope('scope2');
+        $scope2->setIsDefault(false);
+
+        $manager->persist($scope2);
+
+        $scope3 = new OAuth2Scope();
+        $scope3->setScope('scope3');
+        $scope3->setIsDefault(false);
+
+        $manager->persist($scope3);
+
 
         $user1 = new Entity\User();
         $user1->setUsername('user1');
@@ -37,6 +57,8 @@ class User implements FixtureInterface
             'refresh_token'
         ));
         $client1->setUser($user1);
+        $client1->addScope($scope2);
+        $scope2->addClient($client1);
 
         $manager->persist($client1);
 

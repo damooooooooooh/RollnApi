@@ -66,9 +66,10 @@ return array(
                             'datatype' => 'array',
                         ),
                         'scope' => array(
-                            'type' => 'field',
-                            'name' => 'clientScope',
-                            'datatype' => 'text',
+                            'type' => 'collection',
+                            'name' => 'scope',
+                            'entity' => 'ZF\OAuth2\Entity\Scope',
+                            'mapper' => 'ZF\OAuth2\Mapper\Scope',
                         ),
                         'user_id' => array(
                             'type' => 'relation',
@@ -95,9 +96,10 @@ return array(
                             'datatype' => 'datetime',
                         ),
                         'scope' => array(
-                            'type' => 'field',
+                            'type' => 'collection',
                             'name' => 'scope',
-                            'datatype' => 'text',
+                            'entity' => 'ZF\OAuth2\Entity\Scope',
+                            'mapper' => 'ZF\OAuth2\Mapper\Scope',
                         ),
                         'client_id' => array(
                             'type' => 'relation',
@@ -123,9 +125,10 @@ return array(
                             'datatype' => 'datetime',
                         ),
                         'scope' => array(
-                            'type' => 'field',
+                            'type' => 'collection',
                             'name' => 'scope',
-                            'datatype' => 'text',
+                            'entity' => 'ZF\OAuth2\Entity\Scope',
+                            'mapper' => 'ZF\OAuth2\Mapper\Scope',
                         ),
                         'client_id' => array(
                             'type' => 'relation',
@@ -156,9 +159,10 @@ return array(
                             'datatype' => 'datetime',
                         ),
                         'scope' => array(
-                            'type' => 'field',
+                            'type' => 'collection',
                             'name' => 'scope',
-                            'datatype' => 'text',
+                            'entity' => 'ZF\OAuth2\Entity\Scope',
+                            'mapper' => 'ZF\OAuth2\Mapper\Scope',
                         ),
                         'id_token' => array(
                             'type' => 'field',
@@ -234,11 +238,6 @@ return array(
                 'ZF\OAuth2\Mapper\Scope' => array(
                     'entity' => 'ZF\OAuth2\Entity\Scope',
                     'mapping' => array(
-                        'type' => array(
-                            'type' => 'field',
-                            'name' => 'type',
-                            'datatype' => 'string',
-                        ),
                         'scope' => array(
                             'type' => 'field',
                             'name' => 'scope',

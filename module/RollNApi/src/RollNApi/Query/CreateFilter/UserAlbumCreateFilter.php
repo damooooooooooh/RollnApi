@@ -2,42 +2,14 @@
 
 namespace RollNApi\Query\CreateFilter;
 
-use ZF\Apigility\Doctrine\Server\Query\CreateFilter\DefaultCreateFilter ;
+use ZF\Apigility\Doctrine\Server\Query\CreateFilter\DefaultCreateFilter;
 use Zend\ServiceManager\ServiceLocatorAwareInterface;
 use Zend\ServiceManager\ServiceLocatorInterface;
 use ZF\ApiProblem\ApiProblem;
 use ZF\Rest\ResourceEvent;
 
-class UserAlbumCreateFilter extends DefaultCreateFilter implements ServiceLocatorAwareInterface
+class UserAlbumCreateFilter extends DefaultCreateFilter
 {
-    /**
-     * @var ServiceLocatorInterface
-     */
-    protected $serviceLocator = null;
-
-    /**
-     * Set service locator
-     *
-     * @param ServiceLocatorInterface $serviceLocator
-     * @return mixed
-     */
-    public function setServiceLocator(ServiceLocatorInterface $serviceLocator)
-    {
-        $this->serviceLocator = $serviceLocator;
-
-        return $this;
-    }
-
-    /**
-     * Get service locator
-     *
-     * @return ServiceLocatorInterface
-     */
-    public function getServiceLocator()
-    {
-        return $this->serviceLocator;
-    }
-
     /**
      * @param string $entityClass
      * @param array  $data
@@ -46,6 +18,11 @@ class UserAlbumCreateFilter extends DefaultCreateFilter implements ServiceLocato
      */
     public function filter(ResourceEvent $event, $entityClass, $data)
     {
+        $validate = $this->validateOAuth2();
+        if ($validate instanceof ApiProblem) {
+            return $validate;
+        }
+
         $request = $this->getServiceLocator()->getServiceLocator()->get('Request')->getQuery()->toArray();
         $identity = $event->getIdentity()->getAuthenticationIdentity();
         $data->user = $identity['user_id'];

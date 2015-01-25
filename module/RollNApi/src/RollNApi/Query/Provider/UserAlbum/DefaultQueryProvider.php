@@ -9,6 +9,11 @@ class DefaultQueryProvider extends DefaultOrm
 {
     public function createQuery(ResourceEvent $event, $entityClass, $parameters)
     {
+        $validate = $this->validateOAuth2(null);
+        if ($validate instanceof ApiProblem) {
+            return $validate;
+        }
+
         $identity = $event->getIdentity()->getAuthenticationIdentity();
         $userId = $identity['user_id'];
 

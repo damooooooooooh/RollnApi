@@ -26,6 +26,7 @@ return array(
     ),
     'zf-apigility-doctrine-query-provider' => array(
         'invokables' => array(
+            'default_orm' => 'RollNApi\Query\Provider\DefaultOrm',
             'user_album_default' => 'RollNApi\Query\Provider\UserAlbum\DefaultQueryProvider',
             'user_album_fetch_all' => 'RollNApi\Query\Provider\UserAlbum\FetchAllQueryProvider',
         )

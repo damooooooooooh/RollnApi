@@ -36,16 +36,27 @@
         <attribute name="table">User</attribute>
       </orm-attributes>
     </entity>
+    <entity name="Loop" uuid="eee19835-8e87-42a7-965d-0dd94e1e1f5e">
+      <field name="id" type="integer" required="true" unique="true" primary="true" auto-increment="true" uuid="006bbe9f-50a2-465b-b84a-04de978698ce"/>
+      <field name="loop_id" type="integer" uuid="01c77eb5-6794-43ba-ac31-178307dd5431"/>
+    </entity>
+    <association from="Loop" to="Loop" owner-alias="childLoop" inverse-alias="parentLoop" uuid="79cd3727-cf12-4c62-953c-e2ab7d5bf5b7">
+      <association-field from="loop_id" to="id"/>
+    </association>
+    <comment caption="Loop Entity" description="Used for testing infinite recursion and maximum depth." uuid="d0e7e2ac-e586-4797-9774-9bf40a19e40f"/>
+    <comment caption="UserAlbum Entity" description="This represents a physical copy of an album which is owned by a user." uuid="1acda674-bd80-4485-9800-08e2b6af231b"/>
     <orm-attributes>
       <attribute name="namespace">RollNApi\Entity</attribute>
     </orm-attributes>
   </module>
   <external-module storage-path="../../zf-oauth2/media/ZF OAuth2.module.xml"/>
   <visual-data>
+    <comment uuid="05a610e1-fad6-4e65-8b59-c09ed14d78bb" bg-color="4294967264" position-x="-3" position-y="390" size-x="0" size-x2="198" size-y="0" size-y2="92" txt-color="4278190080"/>
     <entity uuid="0cef011b-fcdf-4e6e-a813-2a8d49ba4748" bg-color="4294967295" hdr-color="4292006610" position-x="682" position-y="164" size-x="0" size-x2="106" size-y="0" size-y2="87"/>
     <entity uuid="0dca3ab1-9369-4587-a56e-4449d458862f" bg-color="4294967295" hdr-color="4292006610" position-x="218" position-y="94" size-x="0" size-x2="96" size-y="0" size-y2="73"/>
     <entity uuid="0e40a98d-82ec-47f1-acc0-649982b1c48a" bg-color="4294967295" hdr-color="4292006610" position-x="369" position-y="173" size-x="0" size-x2="93" size-y="0" size-y2="101"/>
     <association uuid="1a897fc1-617e-4cc3-82b7-54f564d3335d" color="4288059030"/>
+    <comment uuid="1acda674-bd80-4485-9800-08e2b6af231b" bg-color="4294967264" position-x="185" position-y="37" size-x="0" size-x2="170" size-y="0" size-y2="49" txt-color="4278190080"/>
     <entity uuid="1b40f6a9-e21a-49d3-8d44-604e36d28d35" bg-color="4294967295" hdr-color="4292006610" position-x="519" position-y="280" size-x="0" size-x2="127" size-y="0" size-y2="101"/>
     <many-to-many-association uuid="1d7e8cae-9456-4602-a095-f2048b9303c4" color="4288059030"/>
     <association uuid="2664c472-a222-4480-80e6-34943b78930f" color="4288059030"/>
@@ -55,11 +66,12 @@
     <entity uuid="4f5f9113-1ca7-472d-ba02-7b178329ced8" bg-color="4294967295" hdr-color="4292006610" position-x="672" position-y="587" size-x="0" size-x2="127" size-y="0" size-y2="60"/>
     <many-to-many-association uuid="609e9b50-11d4-4ba4-8e4e-37a0286c0358" color="4288059030"/>
     <entity uuid="654eac84-7c6d-4280-9138-1658291dfb7e" bg-color="4294967295" hdr-color="4292006610" position-x="509" position-y="509" size-x="0" size-x2="148" size-y="0" size-y2="60"/>
-    <comment uuid="664daa50-d4a6-4d82-a35f-5eb5e2e8e7ca" bg-color="4294967264" position-x="183" position-y="-7" size-x="0" size-x2="301" size-y="0" size-y2="85" txt-color="4278190080"/>
+    <comment uuid="664daa50-d4a6-4d82-a35f-5eb5e2e8e7ca" bg-color="4294967264" position-x="183" position-y="-7" size-x="0" size-x2="264" size-y="0" size-y2="72" txt-color="4278190080"/>
     <association uuid="6b2ceec2-f65b-4944-be20-613a797e5829" color="4288059030"/>
     <association uuid="70498bb7-43ce-44bf-bb94-7f402a826cbb" caption1-position-x="0" caption1-position-y="0" center-position-x="0" center-position-y="0" color="4288059030"/>
     <entity uuid="7103834d-0fe7-4345-9f6e-0e5ef1f651a4" bg-color="4294967295" hdr-color="4292006610" position-x="213" position-y="252" size-x="0" size-x2="106" size-y="0" size-y2="101"/>
     <many-to-many-association uuid="7563f43f-925d-4df3-bfd3-d2bf1855a0ca" color="4288059030"/>
+    <association uuid="79cd3727-cf12-4c62-953c-e2ab7d5bf5b7" caption1-position-x="0" caption1-position-y="0" center-position-x="0" center-position-y="-20" color="4288059030"/>
     <entity uuid="8c75fc92-0e0a-43ed-b5dc-5859aba057ae" bg-color="4294967295" hdr-color="4292006610" position-x="362" position-y="387" size-x="0" size-x2="106" size-y="0" size-y2="73"/>
     <entity uuid="8cc40580-9611-471f-a6c7-9a64ec3b2869" bg-color="4294967295" hdr-color="4292006610" position-x="523" position-y="715" size-x="0" size-x2="99" size-y="0" size-y2="59"/>
     <entity uuid="9c143447-a1f4-4187-a5f9-45e768f78ebb" bg-color="4294967295" hdr-color="4292006610" position-x="13" position-y="127" size-x="0" size-x2="93" size-y="0" size-y2="73"/>
@@ -67,13 +79,15 @@
     <entity uuid="b0bf79e1-6690-4e50-85c9-06675fe76655" bg-color="4294967295" hdr-color="4292006610" position-x="54" position-y="48" size-x="0" size-x2="20" size-y="0" size-y2="20"/>
     <entity uuid="b6562bcc-4fca-413e-a560-91da4d75dc9f" bg-color="4294967295" hdr-color="4292006610" position-x="92" position-y="502" size-x="0" size-x2="134" size-y="0" size-y2="87"/>
     <project uuid="b7638313-3ca8-4389-9163-d2bb1c15f725" size-x="0" size-x2="1696" size-y="37" size-y2="959"/>
+    <comment uuid="d0e7e2ac-e586-4797-9774-9bf40a19e40f" bg-color="4294967264" position-x="38" position-y="377" size-x="0" size-x2="178" size-y="0" size-y2="49" txt-color="4278190080"/>
     <association uuid="d1085ed0-2c0a-47c6-bfc6-cde3b25dd97e" caption1-position-x="0" caption1-position-y="0" center-position-x="0" center-position-y="0" color="4288059030"/>
     <entity uuid="d25ad9b3-1751-49e7-901d-a92fae42a8b2" bg-color="4294967295" hdr-color="4292006610" position-x="351" position-y="510" size-x="0" size-x2="127" size-y="0" size-y2="60"/>
     <many-to-many-association-entity uuid="d69ad79d-983f-4cda-905f-1e084aefaff1" center-position-x="0" center-position-y="0"/>
     <many-to-many-association uuid="d6c88e38-48c1-43d7-b5e9-b6902ee48e7c" color="4288059030"/>
     <association uuid="d9c8b226-5b7a-4991-adb8-f01509ffdc87" color="4288059030"/>
     <module uuid="e33a902b-9096-46f4-81af-cb8fa813a736" bg-color="4294959018" position-x="706" position-y="27" size-x="11" size-x2="912" size-y="22" size-y2="851"/>
-    <entity uuid="f42aa952-941d-4cec-adaf-5df5bc023867" bg-color="4294967295" hdr-color="4292006610" position-x="1" position-y="327" size-x="0" size-x2="96" size-y="0" size-y2="101"/>
+    <entity uuid="eee19835-8e87-42a7-965d-0dd94e1e1f5e" bg-color="4294967295" hdr-color="4292006610" position-x="134" position-y="454" size-x="0" size-x2="20" size-y="0" size-y2="20"/>
+    <entity uuid="f42aa952-941d-4cec-adaf-5df5bc023867" bg-color="4294967295" hdr-color="4292006610" position-x="24" position-y="269" size-x="0" size-x2="96" size-y="0" size-y2="115"/>
     <entity uuid="f8294b36-7cc7-488b-b90f-ad9f5816e053" bg-color="4294967295" hdr-color="4292006610" position-x="47" position-y="166" size-x="0" size-x2="91" size-y="0" size-y2="59"/>
     <entity uuid="fc3df9ba-7e50-4415-90d4-6009251c5942" bg-color="4294967295" hdr-color="4292006610" position-x="265" position-y="715" size-x="0" size-x2="96" size-y="0" size-y2="60"/>
   </visual-data>

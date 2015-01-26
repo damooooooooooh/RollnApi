@@ -2,13 +2,13 @@
 
 namespace RollNApi\Query\CreateFilter;
 
-use ZF\Apigility\Doctrine\Server\Query\CreateFilter\DefaultCreateFilter;
+use ZF\Apigility\Doctrine\Server\Query\CreateFilter\DefaultCreateFilter as ZFDefaultCreateFilter;
 use Zend\ServiceManager\ServiceLocatorAwareInterface;
 use Zend\ServiceManager\ServiceLocatorInterface;
 use ZF\ApiProblem\ApiProblem;
 use ZF\Rest\ResourceEvent;
 
-class UserAlbumCreateFilter extends DefaultCreateFilter
+class DefaultCreateFilter extends ZFDefaultCreateFilter
 {
     /**
      * @param string $entityClass
@@ -22,10 +22,6 @@ class UserAlbumCreateFilter extends DefaultCreateFilter
         if ($validate instanceof ApiProblem) {
             return $validate;
         }
-
-        $request = $event->getRequest()->getQuery()->toArray();
-        $identity = $event->getIdentity()->getAuthenticationIdentity();
-        $data->user = $identity['user_id'];
 
         return $data;
     }

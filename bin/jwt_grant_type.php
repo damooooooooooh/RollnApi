@@ -1,12 +1,15 @@
 <?php
 
-/** 
+/**
  * This is a script to test the Jwt grant type
  */
 
 require __DIR__ . '/../vendor/autoload.php';
+date_default_timezone_set('utc');
 
 use OAuth2\Encryption\Jwt;
+use DateTime;
+
 /**
  * Generate a JWT
  *
@@ -52,7 +55,11 @@ $client_id   = 'client1';
 $user_id     = 'user1';
 $grant_type  = 'urn:ietf:params:oauth:grant-type:jwt-bearer';
 
-$jwt = generateJWT($private_key, $client_id, $user_id, 'http://localhost:8083');
+$expires = new DateTime('today +1 day');
+$expires = $expires->format('U');
+$nbf = new DateTime();
+$nbf = $nbf->format('U');
+$jwt = generateJWT($private_key, $client_id, $user_id, 'http://localhost:8083', $expires, $nbf, '123456abcdefg');
 
 passthru("curl http://localhost:8083/oauth -d 'grant_type=$grant_type&assertion=$jwt'");
 

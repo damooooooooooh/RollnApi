@@ -8,7 +8,9 @@ use RollNApi\Entity;
 use ZF\OAuth2\Entity\Client as OAuth2Client;
 use ZF\OAuth2\Entity\Scope as OAuth2Scope;
 use ZF\OAuth2\Entity\Jwt as OAuth2Jwt;
+use ZF\OAuth2\Entity\Jti as OAuth2Jti;
 use Zend\Crypt\Password\Bcrypt;
+use DateTime;
 
 class User implements FixtureInterface
 {
@@ -36,7 +38,6 @@ class User implements FixtureInterface
         $scope3->setIsDefault(false);
 
         $manager->persist($scope3);
-
 
         $user1 = new Entity\User();
         $user1->setUsername('user1');
@@ -68,6 +69,15 @@ class User implements FixtureInterface
         $jwt1->setClient($client1);
 
         $manager->persist($jwt1);
+
+        $jti1 = new OAuth2Jti();
+        $jti1->setSubject('user1');
+        $jti1->setAudience('http://localhost:8083');
+        $jti1->setExpires(new DateTime(' today +1 day'));
+        $jti1->setJti('123456abcdef');
+        $jti1->setClient($client1);
+
+        $manager->persist($jti1);
 
         $user2 = new Entity\User();
         $user2->setUsername('user2');
@@ -119,6 +129,11 @@ class User implements FixtureInterface
 
             $manager->persist($userAlbum);
         }
+
+        $loop = new Entity\Loop();
+        $loop->setChildLoop($loop)
+
+        $manager->persist($loop);
 
         $manager->flush();
     }

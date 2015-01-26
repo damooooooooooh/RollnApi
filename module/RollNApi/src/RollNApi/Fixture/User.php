@@ -131,7 +131,7 @@ class User implements FixtureInterface
         }
 
         $loop = new Entity\Loop();
-        $loop->setChildLoop($loop)
+        $loop->setParentLoop($loop);
 
         $manager->persist($loop);
 

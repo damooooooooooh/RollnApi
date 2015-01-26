@@ -2,7 +2,7 @@
 return array(
     'service_manager' => array(
         'invokables' => array(
-            'hydrator_filter_exclude_user' => 'RollNApi\Hydrator\Filter\ExcludeUser',
+            'hydrator_filter_exclude_user' => 'RollNApi\\Hydrator\\Filter\\ExcludeUser',
         ),
     ),
     'data-fixture' => array(
@@ -26,16 +26,16 @@ return array(
     ),
     'zf-apigility-doctrine-query-provider' => array(
         'invokables' => array(
-            'default_orm' => 'RollNApi\Query\Provider\DefaultOrm',
-            'user_album_default' => 'RollNApi\Query\Provider\UserAlbum\DefaultQueryProvider',
-            'user_album_fetch_all' => 'RollNApi\Query\Provider\UserAlbum\FetchAllQueryProvider',
-        )
+            'default_orm' => 'RollNApi\\Query\\Provider\\DefaultOrm',
+            'user_album_default' => 'RollNApi\\Query\\Provider\\UserAlbum\\DefaultQueryProvider',
+            'user_album_fetch_all' => 'RollNApi\\Query\\Provider\\UserAlbum\\FetchAllQueryProvider',
+        ),
     ),
     'zf-apigility-doctrine-query-create-filter' => array(
         'invokables' => array(
-            'default' => 'RollNApi\Query\CreateFilter\DefaultCreateFilter',
-            'user_album' => 'RollNApi\Query\CreateFilter\UserAlbumCreateFilter',
-        )
+            'default' => 'RollNApi\\Query\\CreateFilter\\DefaultCreateFilter',
+            'user_album' => 'RollNApi\\Query\\CreateFilter\\UserAlbumCreateFilter',
+        ),
     ),
     'router' => array(
         'routes' => array(
@@ -66,6 +66,15 @@ return array(
                     ),
                 ),
             ),
+            'roll-n-api.rest.doctrine.loop' => array(
+                'type' => 'Segment',
+                'options' => array(
+                    'route' => '/api/loop[/:loop_id]',
+                    'defaults' => array(
+                        'controller' => 'RollNApi\\V1\\Rest\\Loop\\Controller',
+                    ),
+                ),
+            ),
         ),
     ),
     'zf-versioning' => array(
@@ -73,6 +82,7 @@ return array(
             0 => 'roll-n-api.rest.doctrine.artist',
             1 => 'roll-n-api.rest.doctrine.album',
             2 => 'roll-n-api.rest.doctrine.user-album',
+            3 => 'roll-n-api.rest.doctrine.loop',
         ),
     ),
     'zf-rest' => array(
@@ -143,12 +153,35 @@ return array(
             'entity_class' => 'RollNApi\\Entity\\UserAlbum',
             'collection_class' => 'RollNApi\\V1\\Rest\\UserAlbum\\UserAlbumCollection',
         ),
+        'RollNApi\\V1\\Rest\\Loop\\Controller' => array(
+            'listener' => 'RollNApi\\V1\\Rest\\Loop\\LoopResource',
+            'route_name' => 'roll-n-api.rest.doctrine.loop',
+            'route_identifier_name' => 'loop_id',
+            'entity_identifier_name' => 'id',
+            'collection_name' => 'loop',
+            'entity_http_methods' => array(
+                0 => 'GET',
+                1 => 'PATCH',
+                2 => 'PUT',
+                3 => 'DELETE',
+            ),
+            'collection_http_methods' => array(
+                0 => 'GET',
+                1 => 'POST',
+            ),
+            'collection_query_whitelist' => array(),
+            'page_size' => 25,
+            'page_size_param' => null,
+            'entity_class' => 'RollNApi\\Entity\\Loop',
+            'collection_class' => 'RollNApi\\V1\\Rest\\Loop\\LoopCollection',
+        ),
     ),
     'zf-content-negotiation' => array(
         'controllers' => array(
             'RollNApi\\V1\\Rest\\Artist\\Controller' => 'HalJson',
             'RollNApi\\V1\\Rest\\Album\\Controller' => 'HalJson',
             'RollNApi\\V1\\Rest\\UserAlbum\\Controller' => 'HalJson',
+            'RollNApi\\V1\\Rest\\Loop\\Controller' => 'HalJson',
         ),
         'accept-whitelist' => array(
             'RollNApi\\V1\\Rest\\Artist\\Controller' => array(
@@ -166,6 +199,11 @@ return array(
                 1 => 'application/hal+json',
                 2 => 'application/json',
             ),
+            'RollNApi\\V1\\Rest\\Loop\\Controller' => array(
+                0 => 'application/vnd.roll-n-api.v1+json',
+                1 => 'application/hal+json',
+                2 => 'application/json',
+            ),
         ),
         'content-type-whitelist' => array(
             'RollNApi\\V1\\Rest\\Artist\\Controller' => array(
@@ -177,6 +215,10 @@ return array(
                 1 => 'application/json',
             ),
             'RollNApi\\V1\\Rest\\UserAlbum\\Controller' => array(
+                0 => 'application/vnd.roll-n-api.v1+json',
+                1 => 'application/json',
+            ),
+            'RollNApi\\V1\\Rest\\Loop\\Controller' => array(
                 0 => 'application/vnd.roll-n-api.v1+json',
                 1 => 'application/json',
             ),
@@ -217,6 +259,17 @@ return array(
                 'route_name' => 'roll-n-api.rest.doctrine.user-album',
                 'is_collection' => true,
             ),
+            'RollNApi\\Entity\\Loop' => array(
+                'route_identifier_name' => 'loop_id',
+                'entity_identifier_name' => 'id',
+                'route_name' => 'roll-n-api.rest.doctrine.loop',
+                'hydrator' => 'RollNApi\\V1\\Rest\\Loop\\LoopHydrator',
+            ),
+            'RollNApi\\V1\\Rest\\Loop\\LoopCollection' => array(
+                'entity_identifier_name' => 'id',
+                'route_name' => 'roll-n-api.rest.doctrine.loop',
+                'is_collection' => true,
+            ),
         ),
     ),
     'zf-apigility' => array(
@@ -237,6 +290,10 @@ return array(
                     'fetch_all' => 'user_album_fetch_all',
                 ),
                 'query_create_filter' => 'user_album',
+            ),
+            'RollNApi\\V1\\Rest\\Loop\\LoopResource' => array(
+                'object_manager' => 'doctrine.entitymanager.orm_default',
+                'hydrator' => 'RollNApi\\V1\\Rest\\Loop\\LoopHydrator',
             ),
         ),
     ),
@@ -263,10 +320,17 @@ return array(
             'use_generated_hydrator' => true,
             'filters' => array(
                 'exclude_user' => array(
-                    'condition' => 'and', //optional, default: FilterComposite::CONDITION_OR,
-                    'filter' => 'hydrator_filter_exclude_user', // a name in the Service Manager
+                    'condition' => 'and',
+                    'filter' => 'hydrator_filter_exclude_user',
                 ),
             ),
+        ),
+        'RollNApi\\V1\\Rest\\Loop\\LoopHydrator' => array(
+            'entity_class' => 'RollNApi\\Entity\\Loop',
+            'object_manager' => 'doctrine.entitymanager.orm_default',
+            'by_value' => true,
+            'strategies' => array(),
+            'use_generated_hydrator' => true,
         ),
     ),
 );

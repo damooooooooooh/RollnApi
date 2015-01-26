@@ -11,7 +11,7 @@ class DefaultOrm extends ZFDefaultOrm
 {
     public function createQuery(ResourceEvent $event, $entityClass, $parameters)
     {
-        $validate = $this->validateOAuth2('asdf');
+        $validate = $this->validateOAuth2();
         if ($validate instanceof ApiProblem) {
             return $validate;
         }

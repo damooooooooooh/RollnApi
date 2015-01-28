@@ -77,7 +77,7 @@ return array(
                             'entity_field_name' => 'id',
                             'entity' => 'RollNApi\Entity\User',
                             'datatype' => 'integer',
-                            'allowNull' => true,
+                            'allow_null' => true,
                         ),
                     ),
                 ),

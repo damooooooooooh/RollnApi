@@ -1,0 +1,14 @@
+{
+    "name": "Roll'n API",
+    "homepage": "https:\/\/www.rollnapi.com",
+    "authors": [
+        "Tom Anderson <tom.h.anderson@gmail.com>"
+    ],
+    "private": true,
+    "dependencies": {
+        "angular": "*",
+        "angular-bootstrap": "*",
+        "bootstrap": "*",
+        "jquery": "*"
+    }
+}

@@ -22,22 +22,28 @@ class User implements FixtureInterface
         $bcrypt->setCost(14);
 
         $scope1 = new OAuth2Scope();
-        $scope1->setScope('scope1');
+        $scope1->setScope('read');
         $scope1->setIsDefault(true);
 
         $manager->persist($scope1);
 
         $scope2 = new OAuth2Scope();
-        $scope2->setScope('scope2');
+        $scope2->setScope('update');
         $scope2->setIsDefault(false);
 
         $manager->persist($scope2);
 
         $scope3 = new OAuth2Scope();
-        $scope3->setScope('scope3');
+        $scope3->setScope('delete');
         $scope3->setIsDefault(false);
 
         $manager->persist($scope3);
+
+        $scope4 = new OAuth2Scope();
+        $scope4->setScope('create');
+        $scope4->setIsDefault(false);
+
+        $manager->persist($scope4);
 
         $user1 = new Entity\User();
         $user1->setUsername('user1');
@@ -48,8 +54,8 @@ class User implements FixtureInterface
         $manager->persist($user1);
 
         $client1 = new OAuth2Client();
-        $client1->setClientId('client1');
-        $client1->setSecret($bcrypt->create('client1password'));
+        $client1->setClientId('root');
+        $client1->setSecret($bcrypt->create('root_password'));
         $client1->setGrantType(array(
             'urn:ietf:params:oauth:grant-type:jwt-bearer',
             'password',
@@ -58,8 +64,16 @@ class User implements FixtureInterface
             'refresh_token'
         ));
         $client1->setUser($user1);
+
+        $client1->addScope($scope1);
         $client1->addScope($scope2);
+        $client1->addScope($scope3);
+        $client1->addScope($scope4);
+
+        $scope1->addClient($client1);
         $scope2->addClient($client1);
+        $scope3->addClient($client1);
+        $scope4->addClient($client1);
 
         $manager->persist($client1);
 
@@ -88,10 +102,13 @@ class User implements FixtureInterface
         $manager->persist($user2);
 
         $client2 = new OAuth2Client();
-        $client2->setClientId('client2');
-        $client2->setSecret($bcrypt->create('client2password'));
+        $client2->setClientId('readonly');
+        $client2->setSecret($bcrypt->create('readonly_password'));
         $client2->setGrantType(array('client_credentials', 'refresh_token'));
         $client2->setUser($user2);
+
+        $client2->addScope($scope1);
+        $scope1->addClient($client2);
 
         $manager->persist($client2);
 

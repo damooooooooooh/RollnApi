@@ -29,6 +29,8 @@ return array(
             'default_orm' => 'RollNApi\\Query\\Provider\\DefaultOrm',
             'user_album_default' => 'RollNApi\\Query\\Provider\\UserAlbum\\DefaultQueryProvider',
             'user_album_fetch_all' => 'RollNApi\\Query\\Provider\\UserAlbum\\FetchAllQueryProvider',
+            'update' => 'RollNApi\\Query\\Provider\\Update',
+            'delete' => 'RollNApi\\Query\\Provider\\Delete',
         ),
     ),
     'zf-apigility-doctrine-query-create-filter' => array(
@@ -277,10 +279,20 @@ return array(
             'RollNApi\\V1\\Rest\\Artist\\ArtistResource' => array(
                 'object_manager' => 'doctrine.entitymanager.orm_default',
                 'hydrator' => 'RollNApi\\V1\\Rest\\Artist\\ArtistHydrator',
+                'query_providers' => array(
+                    'update' => 'update',
+                    'patch' => 'update',
+                    'delete' => 'delete',
+                ),
             ),
             'RollNApi\\V1\\Rest\\Album\\AlbumResource' => array(
                 'object_manager' => 'doctrine.entitymanager.orm_default',
                 'hydrator' => 'RollNApi\\V1\\Rest\\Album\\AlbumHydrator',
+                'query_providers' => array(
+                    'update' => 'update',
+                    'patch' => 'update',
+                    'delete' => 'delete',
+                ),
             ),
             'RollNApi\\V1\\Rest\\UserAlbum\\UserAlbumResource' => array(
                 'object_manager' => 'doctrine.entitymanager.orm_default',

@@ -18,7 +18,7 @@ class DefaultCreateFilter extends ZFDefaultCreateFilter
      */
     public function filter(ResourceEvent $event, $entityClass, $data)
     {
-        $validate = $this->validateOAuth2();
+        $validate = $this->validateOAuth2('create');
         if ($validate instanceof ApiProblem) {
             return $validate;
         }

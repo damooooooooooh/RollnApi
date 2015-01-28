@@ -51,44 +51,51 @@
   </module>
   <external-module storage-path="../../zf-oauth2/media/ZF OAuth2.module.xml"/>
   <visual-data>
-    <comment uuid="05a610e1-fad6-4e65-8b59-c09ed14d78bb" bg-color="4294967264" position-x="-3" position-y="390" size-x="0" size-x2="198" size-y="0" size-y2="92" txt-color="4278190080"/>
-    <entity uuid="0cef011b-fcdf-4e6e-a813-2a8d49ba4748" bg-color="4294967295" hdr-color="4292006610" position-x="682" position-y="164" size-x="0" size-x2="106" size-y="0" size-y2="87"/>
+    <comment uuid="05a610e1-fad6-4e65-8b59-c09ed14d78bb" bg-color="4294967264" position-x="31" position-y="236" size-x="0" size-x2="198" size-y="0" size-y2="92" txt-color="4278190080"/>
+    <entity uuid="0cef011b-fcdf-4e6e-a813-2a8d49ba4748" bg-color="4294967295" hdr-color="4292006610" position-x="59" position-y="16" size-x="0" size-x2="106" size-y="0" size-y2="73"/>
     <entity uuid="0dca3ab1-9369-4587-a56e-4449d458862f" bg-color="4294967295" hdr-color="4292006610" position-x="218" position-y="94" size-x="0" size-x2="96" size-y="0" size-y2="73"/>
-    <entity uuid="0e40a98d-82ec-47f1-acc0-649982b1c48a" bg-color="4294967295" hdr-color="4292006610" position-x="369" position-y="173" size-x="0" size-x2="93" size-y="0" size-y2="101"/>
+    <entity uuid="0e40a98d-82ec-47f1-acc0-649982b1c48a" bg-color="4294967295" hdr-color="4292006610" position-x="300" position-y="203" size-x="0" size-x2="93" size-y="0" size-y2="87"/>
+    <many-to-many-association-entity uuid="1a2f2f70-ba2a-49c8-a50c-ffe2206b4013" split="1"/>
     <association uuid="1a897fc1-617e-4cc3-82b7-54f564d3335d" color="4288059030"/>
     <comment uuid="1acda674-bd80-4485-9800-08e2b6af231b" bg-color="4294967264" position-x="185" position-y="37" size-x="0" size-x2="170" size-y="0" size-y2="49" txt-color="4278190080"/>
-    <entity uuid="1b40f6a9-e21a-49d3-8d44-604e36d28d35" bg-color="4294967295" hdr-color="4292006610" position-x="519" position-y="280" size-x="0" size-x2="127" size-y="0" size-y2="101"/>
+    <entity uuid="1b40f6a9-e21a-49d3-8d44-604e36d28d35" bg-color="4294967295" hdr-color="4292006610" position-x="60" position-y="124" size-x="0" size-x2="127" size-y="0" size-y2="101"/>
     <many-to-many-association uuid="1d7e8cae-9456-4602-a095-f2048b9303c4" color="4288059030"/>
+    <many-to-many-association-entity uuid="216d4d0a-a391-4879-ad9e-d195d818dc27" split="1"/>
     <association uuid="2664c472-a222-4480-80e6-34943b78930f" color="4288059030"/>
+    <region uuid="2842966b-796c-48f0-920e-74b0fc40ec24" bg-color="4293194728" position-x="422" position-y="121" size-x="0" size-x2="225" size-y="0" size-y2="405"/>
     <association uuid="31b3942a-b34a-4495-b4c5-cbbc9fb078fc" caption1-position-x="0" caption1-position-y="0" center-position-x="0" center-position-y="0" color="4288059030"/>
     <association uuid="3efa4b07-67d5-48a1-94e8-69ad2a5bc60e" color="4288059030"/>
-    <module uuid="4da0d953-1fc5-4f70-adde-196a93c9b89b" bg-color="4294900968" position-x="27" position-y="18" size-x="0" size-x2="404" size-y="0" size-y2="621"/>
-    <entity uuid="4f5f9113-1ca7-472d-ba02-7b178329ced8" bg-color="4294967295" hdr-color="4292006610" position-x="672" position-y="587" size-x="0" size-x2="127" size-y="0" size-y2="60"/>
+    <many-to-many-association-entity uuid="438b279b-99ed-4a90-9352-79845961ace6" split="1"/>
+    <module uuid="4da0d953-1fc5-4f70-adde-196a93c9b89b" bg-color="4294961622" position-x="23" position-y="-9" size-x="0" size-x2="465" size-y="0" size-y2="686"/>
+    <entity uuid="4f5f9113-1ca7-472d-ba02-7b178329ced8" bg-color="4294967295" hdr-color="4292006610" position-x="173" position-y="350" size-x="0" size-x2="127" size-y="0" size-y2="60"/>
     <many-to-many-association uuid="609e9b50-11d4-4ba4-8e4e-37a0286c0358" color="4288059030"/>
-    <entity uuid="654eac84-7c6d-4280-9138-1658291dfb7e" bg-color="4294967295" hdr-color="4292006610" position-x="509" position-y="509" size-x="0" size-x2="148" size-y="0" size-y2="60"/>
-    <comment uuid="664daa50-d4a6-4d82-a35f-5eb5e2e8e7ca" bg-color="4294967264" position-x="183" position-y="-7" size-x="0" size-x2="264" size-y="0" size-y2="72" txt-color="4278190080"/>
+    <entity uuid="654eac84-7c6d-4280-9138-1658291dfb7e" bg-color="4294967295" hdr-color="4292006610" position-x="24" position-y="253" size-x="0" size-x2="148" size-y="0" size-y2="60"/>
+    <comment uuid="664daa50-d4a6-4d82-a35f-5eb5e2e8e7ca" bg-color="4294967264" position-x="39" position-y="5" size-x="0" size-x2="264" size-y="0" size-y2="72" txt-color="4278190080"/>
     <association uuid="6b2ceec2-f65b-4944-be20-613a797e5829" color="4288059030"/>
     <association uuid="70498bb7-43ce-44bf-bb94-7f402a826cbb" caption1-position-x="0" caption1-position-y="0" center-position-x="0" center-position-y="0" color="4288059030"/>
     <entity uuid="7103834d-0fe7-4345-9f6e-0e5ef1f651a4" bg-color="4294967295" hdr-color="4292006610" position-x="213" position-y="252" size-x="0" size-x2="106" size-y="0" size-y2="101"/>
     <many-to-many-association uuid="7563f43f-925d-4df3-bfd3-d2bf1855a0ca" color="4288059030"/>
     <association uuid="79cd3727-cf12-4c62-953c-e2ab7d5bf5b7" caption1-position-x="0" caption1-position-y="0" center-position-x="0" center-position-y="-20" color="4288059030"/>
-    <entity uuid="8c75fc92-0e0a-43ed-b5dc-5859aba057ae" bg-color="4294967295" hdr-color="4292006610" position-x="362" position-y="387" size-x="0" size-x2="106" size-y="0" size-y2="73"/>
-    <entity uuid="8cc40580-9611-471f-a6c7-9a64ec3b2869" bg-color="4294967295" hdr-color="4292006610" position-x="523" position-y="715" size-x="0" size-x2="99" size-y="0" size-y2="59"/>
-    <entity uuid="9c143447-a1f4-4187-a5f9-45e768f78ebb" bg-color="4294967295" hdr-color="4292006610" position-x="13" position-y="127" size-x="0" size-x2="93" size-y="0" size-y2="73"/>
+    <entity uuid="8c75fc92-0e0a-43ed-b5dc-5859aba057ae" bg-color="4294967295" hdr-color="4292006610" position-x="72" position-y="306" size-x="0" size-x2="106" size-y="0" size-y2="73"/>
+    <entity uuid="8cc40580-9611-471f-a6c7-9a64ec3b2869" bg-color="4294967295" hdr-color="4292006610" position-x="208" position-y="172" size-x="0" size-x2="99" size-y="0" size-y2="59"/>
+    <region uuid="98a49ed5-e644-4a4e-9b59-d5421643572a" bg-color="4292931823" position-x="675" position-y="122" size-x="0" size-x2="319" size-y="0" size-y2="424"/>
+    <entity uuid="9c143447-a1f4-4187-a5f9-45e768f78ebb" bg-color="4294967295" hdr-color="4292006610" position-x="52" position-y="41" size-x="0" size-x2="93" size-y="0" size-y2="73"/>
     <association uuid="9daca6d8-8f09-4f97-bbfd-6db05bdf3e58" color="4288059030"/>
     <entity uuid="b0bf79e1-6690-4e50-85c9-06675fe76655" bg-color="4294967295" hdr-color="4292006610" position-x="54" position-y="48" size-x="0" size-x2="20" size-y="0" size-y2="20"/>
-    <entity uuid="b6562bcc-4fca-413e-a560-91da4d75dc9f" bg-color="4294967295" hdr-color="4292006610" position-x="92" position-y="502" size-x="0" size-x2="134" size-y="0" size-y2="87"/>
-    <project uuid="b7638313-3ca8-4389-9163-d2bb1c15f725" size-x="0" size-x2="1696" size-y="37" size-y2="959"/>
+    <entity uuid="b6562bcc-4fca-413e-a560-91da4d75dc9f" bg-color="4294967295" hdr-color="4292006610" position-x="50" position-y="126" size-x="0" size-x2="134" size-y="0" size-y2="87"/>
+    <project uuid="b7638313-3ca8-4389-9163-d2bb1c15f725" size-x="0" size-x2="1626" size-y="59" size-y2="724"/>
     <comment uuid="d0e7e2ac-e586-4797-9774-9bf40a19e40f" bg-color="4294967264" position-x="38" position-y="377" size-x="0" size-x2="178" size-y="0" size-y2="49" txt-color="4278190080"/>
     <association uuid="d1085ed0-2c0a-47c6-bfc6-cde3b25dd97e" caption1-position-x="0" caption1-position-y="0" center-position-x="0" center-position-y="0" color="4288059030"/>
-    <entity uuid="d25ad9b3-1751-49e7-901d-a92fae42a8b2" bg-color="4294967295" hdr-color="4292006610" position-x="351" position-y="510" size-x="0" size-x2="127" size-y="0" size-y2="60"/>
+    <entity uuid="d25ad9b3-1751-49e7-901d-a92fae42a8b2" bg-color="4294967295" hdr-color="4292006610" position-x="23" position-y="90" size-x="0" size-x2="127" size-y="0" size-y2="60"/>
     <many-to-many-association-entity uuid="d69ad79d-983f-4cda-905f-1e084aefaff1" center-position-x="0" center-position-y="0"/>
     <many-to-many-association uuid="d6c88e38-48c1-43d7-b5e9-b6902ee48e7c" color="4288059030"/>
     <association uuid="d9c8b226-5b7a-4991-adb8-f01509ffdc87" color="4288059030"/>
-    <module uuid="e33a902b-9096-46f4-81af-cb8fa813a736" bg-color="4294959018" position-x="706" position-y="27" size-x="11" size-x2="912" size-y="22" size-y2="851"/>
+    <module uuid="e33a902b-9096-46f4-81af-cb8fa813a736" bg-color="4287552497" position-x="547" position-y="23" size-x="30" size-x2="1020" size-y="32" size-y2="651"/>
     <entity uuid="eee19835-8e87-42a7-965d-0dd94e1e1f5e" bg-color="4294967295" hdr-color="4292006610" position-x="134" position-y="454" size-x="0" size-x2="20" size-y="0" size-y2="20"/>
-    <entity uuid="f42aa952-941d-4cec-adaf-5df5bc023867" bg-color="4294967295" hdr-color="4292006610" position-x="24" position-y="269" size-x="0" size-x2="96" size-y="0" size-y2="115"/>
+    <entity uuid="f42aa952-941d-4cec-adaf-5df5bc023867" bg-color="4294967295" hdr-color="4292006610" position-x="58" position-y="357" size-x="0" size-x2="96" size-y="0" size-y2="101"/>
+    <many-to-many-association-entity uuid="f71382dc-97f2-4398-a7fd-cd6155b23f83" split="1"/>
+    <region uuid="f75990b4-77ef-4d38-950e-631e3b3b8fbb" bg-color="4292728527" position-x="20" position-y="117" size-x="0" size-x2="255" size-y="0" size-y2="484"/>
     <entity uuid="f8294b36-7cc7-488b-b90f-ad9f5816e053" bg-color="4294967295" hdr-color="4292006610" position-x="47" position-y="166" size-x="0" size-x2="91" size-y="0" size-y2="59"/>
-    <entity uuid="fc3df9ba-7e50-4415-90d4-6009251c5942" bg-color="4294967295" hdr-color="4292006610" position-x="265" position-y="715" size-x="0" size-x2="96" size-y="0" size-y2="60"/>
+    <entity uuid="fc3df9ba-7e50-4415-90d4-6009251c5942" bg-color="4294967295" hdr-color="4292006610" position-x="209" position-y="47" size-x="0" size-x2="96" size-y="0" size-y2="60"/>
   </visual-data>
 </skipper>

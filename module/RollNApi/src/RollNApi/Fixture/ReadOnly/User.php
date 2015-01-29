@@ -1,6 +1,6 @@
 <?php
 
-namespace RollNApi\Fixture;
+namespace RollNApi\Fixture\ReadOnly;
 
 use Doctrine\Common\Persistence\ObjectManager;
 use Doctrine\Common\DataFixtures\FixtureInterface;
@@ -44,54 +44,6 @@ class User implements FixtureInterface
         $scope4->setIsDefault(false);
 
         $manager->persist($scope4);
-
-        $user1 = new Entity\User();
-        $user1->setUsername('user1');
-        $user1->setPassword($bcrypt->create('user1password'));
-        $user1->setEmail('tom.h.anderson@gmail.com');
-        $user1->setDisplayName('Tom Anderson');
-
-        $manager->persist($user1);
-
-        $client1 = new OAuth2Client();
-        $client1->setClientId('root');
-        $client1->setSecret($bcrypt->create('root_password'));
-        $client1->setGrantType(array(
-            'urn:ietf:params:oauth:grant-type:jwt-bearer',
-            'password',
-            'authorization_code',
-            'client_credentials',
-            'refresh_token'
-        ));
-        $client1->setUser($user1);
-
-        $client1->addScope($scope1);
-        $client1->addScope($scope2);
-        $client1->addScope($scope3);
-        $client1->addScope($scope4);
-
-        $scope1->addClient($client1);
-        $scope2->addClient($client1);
-        $scope3->addClient($client1);
-        $scope4->addClient($client1);
-
-        $manager->persist($client1);
-
-        $jwt1 = new OAuth2Jwt();
-        $jwt1->setSubject('user1');
-        $jwt1->setPublicKey(file_get_contents(__DIR__ . '/../../../../../media/pubkey.pem'));
-        $jwt1->setClient($client1);
-
-        $manager->persist($jwt1);
-
-        $jti1 = new OAuth2Jti();
-        $jti1->setSubject('user1');
-        $jti1->setAudience('http://localhost:8083');
-        $jti1->setExpires(new DateTime(' today +1 day'));
-        $jti1->setJti('123456abcdef');
-        $jti1->setClient($client1);
-
-        $manager->persist($jti1);
 
         $user2 = new Entity\User();
         $user2->setUsername('user2');
@@ -137,7 +89,7 @@ class User implements FixtureInterface
             $userAlbum = new Entity\UserAlbum();
             $userAlbum->setAlbum($album);
             if ($userFlop = !$userFlop) {
-                $userAlbum->setUser($user1);
+#                $userAlbum->setUser($user1);
             } else {
                 $userAlbum->setUser($user2);
             }

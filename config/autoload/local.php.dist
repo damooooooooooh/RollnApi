@@ -25,6 +25,15 @@ $ormParams = [
 
 return array(
     /**
+     * For a root/root_password API user uncomment this block
+     */
+    /*
+    'data-fixture' => array(
+        'RollNApi_Root_fixture' => __DIR__ . '/../src/RollNApi/Fixture/Root',
+    ),
+    */
+
+    /**
      * Doctrine configuration for sqlite
      */
     'doctrine' => [

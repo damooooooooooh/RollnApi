@@ -20,6 +20,12 @@ This is written for PHP 5.3 but these instructions assume 5.4 or greater.
 git clone git@github.com:TomHAnderson/RollnApi
 cd RollnApi
 cp config/autoload/local.php.dist config/autoload/local.php
+Uncomment this section of local.php for a root API user:
+    /*
+   'data-fixture' => array(
+       'RollNApi_Root_fixture' => __DIR__ . '/../src/RollNApi/Fixture/Root',
+   ),
+   */
 ./composer.phar install
 php public/index.php orm:schema-tool:create
 php public/index.php data-fixture:import

@@ -6,7 +6,7 @@ return array(
         ),
     ),
     'data-fixture' => array(
-        'RollNApi_fixture' => __DIR__ . '/../src/RollNApi/Fixture',
+        'RollNApi_ReadOnly_fixture' => __DIR__ . '/../src/RollNApi/Fixture/ReadOnly',
     ),
     'doctrine' => array(
         'driver' => array(

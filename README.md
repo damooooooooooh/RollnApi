@@ -1,6 +1,9 @@
 Roll'n API
 ==========
 
+This repository is a companion to a talk [Roll'n API](http://rollnapi.com) by Tom Anderson.
+
+
 Doctrine OAuth2 API with Apigility 
 ----------------------------------
 

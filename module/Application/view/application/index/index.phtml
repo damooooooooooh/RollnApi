@@ -1,11 +1,4 @@
-<style>
-.jumbotron {
-background-color: white;
-}
-
-</style>
-
-<div class="jumbotron">
+<div class="conatiner">
     <h1><?php echo sprintf($this->translate('Roll\'n API'), '<span class="color-orange">', '</span>') ?></h1>
     <p>
     This website is the companion to a talk detailing how to build a Doctrine ORM OAuth2 API with
@@ -27,6 +20,12 @@ If you have <a href="http://www.skipper18.com">Skipper</a> then <a href="https:/
 <br>
 
 <img src="/img/erd.png">
+
+<h1>Running tests against the demo API</h1>
+<p>
+This website is running the Roll'n API API.  See the See <a href="https://github.com/TomHAnderson/RollnApi/blob/master/docs/LIVE_TESTING.md">Live API Testing Guide</a>
+to try it out.
+</p>
 
 <h1>Installing the completed API</h1>
 
@@ -73,7 +72,7 @@ If you have <a href="http://www.skipper18.com">Skipper</a> then <a href="https:/
     <div class="col-md-12">
         <div class="panel panel-default">
             <div class="panel-heading">
-                <h3 class="panel-title"><?php echo $this->translate('3. Run API tests') ?></h3>
+                <h3 class="panel-title"><?php echo $this->translate('3. Run All API tests') ?></h3>
             </div>
             <div class="panel-body">
                 See <a href="https://github.com/TomHAnderson/RollnApi/blob/master/docs/API_TESTING.md">API Testing Guide</a>

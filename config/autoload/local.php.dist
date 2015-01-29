@@ -11,9 +11,6 @@
  * credentials from accidentally being committed into version control.
  */
 
-error_reporting(E_ALL);
-ini_set('display_errors', 1);
-
 date_default_timezone_set('utc');
 
 $ormParams = [
@@ -40,11 +37,6 @@ return array(
             ],
         ],
     ],
-
-    'view_manager' => array(
-        'display_not_found_reason' => true,
-        'display_exceptions'       => true,
-    ),
 
     /**
      * Doctrine configuration for MySQL or Maria DB

@@ -39,6 +39,7 @@
     <entity name="Loop" uuid="eee19835-8e87-42a7-965d-0dd94e1e1f5e">
       <field name="id" type="integer" required="true" unique="true" primary="true" auto-increment="true" uuid="006bbe9f-50a2-465b-b84a-04de978698ce"/>
       <field name="loop_id" type="integer" uuid="01c77eb5-6794-43ba-ac31-178307dd5431"/>
+      <field name="name" uuid="9043bc09-d882-4504-a842-a726b13aa030"/>
     </entity>
     <association from="Loop" to="Loop" owner-alias="childLoop" inverse-alias="parentLoop" uuid="79cd3727-cf12-4c62-953c-e2ab7d5bf5b7">
       <association-field from="loop_id" to="id"/>

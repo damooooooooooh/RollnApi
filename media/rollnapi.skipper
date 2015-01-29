@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<skipper version="3.0.0.1104" name="zf-oauth2" mvc="Without MVC" orm="Doctrine2" uuid="b7638313-3ca8-4389-9163-d2bb1c15f725">
+<skipper version="3.0.0.1104" name="Roll'n API by Tom Anderson" mvc="Without MVC" orm="Doctrine2" uuid="b7638313-3ca8-4389-9163-d2bb1c15f725">
   <module name="RollNApi" import-format="Doctrine2Xml" import-path="../module/RollNApi/config/xml" uuid="4da0d953-1fc5-4f70-adde-196a93c9b89b">
     <entity name="Artist" uuid="b0bf79e1-6690-4e50-85c9-06675fe76655">
       <field name="id" type="integer" required="true" unique="true" primary="true" auto-increment="true" uuid="50d42ccd-c061-493c-9fa6-e66611c699c1"/>

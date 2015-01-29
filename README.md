@@ -4,6 +4,13 @@ Roll'n API
 This repository is a companion to a talk [Roll'n API](http://rollnapi.com) by Tom Anderson.
 
 
+Entity Relationship Diagram
+------
+The [Skipper](http://www.skipper18.com) digram is recommend: [rollnapi.skipper](https://github.com/TomHAnderson/RollnApi/blob/master/media/rollnapi.skipper)
+
+If you do not have Skipper see the PDF: https://github.com/TomHAnderson/RollnApi/blob/master/media/rollnapi.pdf
+
+
 Doctrine OAuth2 API with Apigility 
 ----------------------------------
 

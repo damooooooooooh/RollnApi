@@ -6,7 +6,7 @@ This repository is a companion to a talk [Roll'n API](http://rollnapi.com) by To
 
 Entity Relationship Diagram
 ------
-The [Skipper](http://www.skipper18.com) digram is recommend: [rollnapi.skipper](https://github.com/TomHAnderson/RollnApi/blob/master/media/rollnapi.skipper)
+The [Skipper](http://www.skipper18.com) diagram is recommend: [rollnapi.skipper](https://github.com/TomHAnderson/RollnApi/blob/master/media/rollnapi.skipper)
 
 If you do not have Skipper see the PDF: https://github.com/TomHAnderson/RollnApi/blob/master/media/rollnapi.pdf
 

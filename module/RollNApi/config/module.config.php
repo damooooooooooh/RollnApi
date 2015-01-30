@@ -266,11 +266,13 @@ return array(
                 'entity_identifier_name' => 'id',
                 'route_name' => 'roll-n-api.rest.doctrine.loop',
                 'hydrator' => 'RollNApi\\V1\\Rest\\Loop\\LoopHydrator',
+                'max_depth' => '37',
             ),
             'RollNApi\\V1\\Rest\\Loop\\LoopCollection' => array(
                 'entity_identifier_name' => 'id',
                 'route_name' => 'roll-n-api.rest.doctrine.loop',
                 'is_collection' => true,
+                'max_depth' => '37',
             ),
         ),
     ),

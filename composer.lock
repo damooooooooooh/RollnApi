@@ -4,7 +4,7 @@
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "d6c37e0671b2f7aebf6649c3dbb1b7c9",
+    "hash": "19eead1965feeae20735259cf66c83d5",
     "packages": [
         {
             "name": "bshaffer/oauth2-server-php",
@@ -2263,7 +2263,7 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/stefanotorresi/zf-hal.git",
-                "reference": "8336cd68243b33b7d8a8fedaa96ceeb8b402ce3f"
+                "reference": "57980316543edfa329d7b1d65106fb73988c60ad"
             },
             "require": {
                 "php": ">=5.3.23",
@@ -2325,7 +2325,7 @@
                 "source": "https://github.com/zfcampus/zf-hal",
                 "issues": "https://github.com/zfcampus/zf-hal/issues"
             },
-            "time": "2015-01-26 22:04:57"
+            "time": "2015-02-05 15:07:20"
         },
         {
             "name": "zfcampus/zf-mvc-auth",
@@ -2916,12 +2916,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/zendframework/ZendDeveloperTools.git",
-                "reference": "4cb1864711eaa2856d2a0c698faedaaf167af248"
+                "reference": "6040e7dce564e8f581cf7213ea3e2f5952b3f7e5"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/zendframework/ZendDeveloperTools/zipball/4cb1864711eaa2856d2a0c698faedaaf167af248",
-                "reference": "4cb1864711eaa2856d2a0c698faedaaf167af248",
+                "url": "https://api.github.com/repos/zendframework/ZendDeveloperTools/zipball/6040e7dce564e8f581cf7213ea3e2f5952b3f7e5",
+                "reference": "6040e7dce564e8f581cf7213ea3e2f5952b3f7e5",
                 "shasum": ""
             },
             "require": {
@@ -2969,7 +2969,7 @@
                 "module",
                 "zf2"
             ],
-            "time": "2015-01-08 20:45:35"
+            "time": "2015-02-05 11:22:46"
         },
         {
             "name": "zendframework/zenddiagnostics",

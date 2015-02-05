@@ -68,3 +68,13 @@ Update the new Album
 ```
 echo '{"name": "Farmhouse"}' | http -f PATCH http://localhost:8083/api/album/7 "Content-Type: application/json" "Authorization: Bearer access_token"
 ```
+
+Create a new Performer with many to many albums
+```
+ echo '{"name": "Performer 1", "album": [{"id": 1}, {"id": 2}]}' | http -f POST http://localhost:8083/api/performer "Content-Type: application/json" "Authorization: Bearer access_token"
+```
+
+Update the Performer with different albums
+```
+echo '{"album": [{"id": 5}, {"id": 6}]}' | http -f PATCH http://localhost:8083/api/performer/1 "Content-Type: application/json" "Authorization: Bearer access_token"
+```

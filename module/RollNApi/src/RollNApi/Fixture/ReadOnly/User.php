@@ -99,7 +99,7 @@ class User implements FixtureInterface
             $manager->persist($userAlbum);
         }
 
-        $loop = new Entity\Loop();
+        $loop = new Entity\TestLoop();
         $loop->setParentLoop($loop);
 
         $manager->persist($loop);

@@ -5,10 +5,15 @@ namespace RollNApi\Entity;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * Loop
+ * TestLoop
  */
-class Loop
+class TestLoop
 {
+    /**
+     * @var string
+     */
+    private $name;
+
     /**
      * @var integer
      */
@@ -20,7 +25,7 @@ class Loop
     private $childLoop;
 
     /**
-     * @var \RollNApi\Entity\Loop
+     * @var \RollNApi\Entity\TestLoop
      */
     private $parentLoop;
 
@@ -30,6 +35,29 @@ class Loop
     public function __construct()
     {
         $this->childLoop = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+    /**
+     * Set name
+     *
+     * @param string $name
+     * @return TestLoop
+     */
+    public function setName($name)
+    {
+        $this->name = $name;
+
+        return $this;
+    }
+
+    /**
+     * Get name
+     *
+     * @return string 
+     */
+    public function getName()
+    {
+        return $this->name;
     }
 
     /**
@@ -45,10 +73,10 @@ class Loop
     /**
      * Add childLoop
      *
-     * @param \RollNApi\Entity\Loop $childLoop
-     * @return Loop
+     * @param \RollNApi\Entity\TestLoop $childLoop
+     * @return TestLoop
      */
-    public function addChildLoop(\RollNApi\Entity\Loop $childLoop)
+    public function addChildLoop(\RollNApi\Entity\TestLoop $childLoop)
     {
         $this->childLoop[] = $childLoop;
 
@@ -58,9 +86,9 @@ class Loop
     /**
      * Remove childLoop
      *
-     * @param \RollNApi\Entity\Loop $childLoop
+     * @param \RollNApi\Entity\TestLoop $childLoop
      */
-    public function removeChildLoop(\RollNApi\Entity\Loop $childLoop)
+    public function removeChildLoop(\RollNApi\Entity\TestLoop $childLoop)
     {
         $this->childLoop->removeElement($childLoop);
     }
@@ -78,10 +106,10 @@ class Loop
     /**
      * Set parentLoop
      *
-     * @param \RollNApi\Entity\Loop $parentLoop
-     * @return Loop
+     * @param \RollNApi\Entity\TestLoop $parentLoop
+     * @return TestLoop
      */
-    public function setParentLoop(\RollNApi\Entity\Loop $parentLoop = null)
+    public function setParentLoop(\RollNApi\Entity\TestLoop $parentLoop = null)
     {
         $this->parentLoop = $parentLoop;
 
@@ -91,38 +119,10 @@ class Loop
     /**
      * Get parentLoop
      *
-     * @return \RollNApi\Entity\Loop 
+     * @return \RollNApi\Entity\TestLoop 
      */
     public function getParentLoop()
     {
         return $this->parentLoop;
-    }
-    /**
-     * @var string
-     */
-    private $name;
-
-
-    /**
-     * Set name
-     *
-     * @param string $name
-     * @return Loop
-     */
-    public function setName($name)
-    {
-        $this->name = $name;
-
-        return $this;
-    }
-
-    /**
-     * Get name
-     *
-     * @return string 
-     */
-    public function getName()
-    {
-        return $this->name;
     }
 }

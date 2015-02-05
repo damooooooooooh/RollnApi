@@ -76,7 +76,7 @@ return array(
                 'options' => array(
                     'route' => '/api/loop[/:loop_id]',
                     'defaults' => array(
-                        'controller' => 'RollNApi\\V1\\Rest\\Loop\\Controller',
+                        'controller' => 'RollNApi\\V1\\Rest\\TestLoop\\Controller',
                     ),
                 ),
             ),
@@ -168,8 +168,8 @@ return array(
             'entity_class' => 'RollNApi\\Entity\\UserAlbum',
             'collection_class' => 'RollNApi\\V1\\Rest\\UserAlbum\\UserAlbumCollection',
         ),
-        'RollNApi\\V1\\Rest\\Loop\\Controller' => array(
-            'listener' => 'RollNApi\\V1\\Rest\\Loop\\LoopResource',
+        'RollNApi\\V1\\Rest\\TestLoop\\Controller' => array(
+            'listener' => 'RollNApi\\V1\\Rest\\TestLoop\\TestLoopResource',
             'route_name' => 'roll-n-api.rest.doctrine.loop',
             'route_identifier_name' => 'loop_id',
             'entity_identifier_name' => 'id',
@@ -187,8 +187,8 @@ return array(
             'collection_query_whitelist' => array(),
             'page_size' => 25,
             'page_size_param' => null,
-            'entity_class' => 'RollNApi\\Entity\\Loop',
-            'collection_class' => 'RollNApi\\V1\\Rest\\Loop\\LoopCollection',
+            'entity_class' => 'RollNApi\\Entity\\TestLoop',
+            'collection_class' => 'RollNApi\\V1\\Rest\\TestLoop\\TestLoopCollection',
         ),
         'RollNApi\\V1\\Rest\\Performer\\Controller' => array(
             'listener' => 'RollNApi\\V1\\Rest\\Performer\\PerformerResource',
@@ -218,7 +218,7 @@ return array(
             'RollNApi\\V1\\Rest\\Artist\\Controller' => 'HalJson',
             'RollNApi\\V1\\Rest\\Album\\Controller' => 'HalJson',
             'RollNApi\\V1\\Rest\\UserAlbum\\Controller' => 'HalJson',
-            'RollNApi\\V1\\Rest\\Loop\\Controller' => 'HalJson',
+            'RollNApi\\V1\\Rest\\TestLoop\\Controller' => 'HalJson',
             'RollNApi\\V1\\Rest\\Performer\\Controller' => 'HalJson',
         ),
         'accept-whitelist' => array(
@@ -237,7 +237,7 @@ return array(
                 1 => 'application/hal+json',
                 2 => 'application/json',
             ),
-            'RollNApi\\V1\\Rest\\Loop\\Controller' => array(
+            'RollNApi\\V1\\Rest\\TestLoop\\Controller' => array(
                 0 => 'application/vnd.roll-n-api.v1+json',
                 1 => 'application/hal+json',
                 2 => 'application/json',
@@ -261,7 +261,7 @@ return array(
                 0 => 'application/vnd.roll-n-api.v1+json',
                 1 => 'application/json',
             ),
-            'RollNApi\\V1\\Rest\\Loop\\Controller' => array(
+            'RollNApi\\V1\\Rest\\TestLoop\\Controller' => array(
                 0 => 'application/vnd.roll-n-api.v1+json',
                 1 => 'application/json',
             ),
@@ -308,14 +308,14 @@ return array(
                 'route_name' => 'roll-n-api.rest.doctrine.user-album',
                 'is_collection' => true,
             ),
-            'RollNApi\\Entity\\Loop' => array(
+            'RollNApi\\Entity\\TestLoop' => array(
                 'route_identifier_name' => 'loop_id',
                 'entity_identifier_name' => 'id',
                 'route_name' => 'roll-n-api.rest.doctrine.loop',
-                'hydrator' => 'RollNApi\\V1\\Rest\\Loop\\LoopHydrator',
+                'hydrator' => 'RollNApi\\V1\\Rest\\TestLoop\\TestLoopHydrator',
                 'max_depth' => '37',
             ),
-            'RollNApi\\V1\\Rest\\Loop\\LoopCollection' => array(
+            'RollNApi\\V1\\Rest\\TestLoop\\TestLoopCollection' => array(
                 'entity_identifier_name' => 'id',
                 'route_name' => 'roll-n-api.rest.doctrine.loop',
                 'is_collection' => true,
@@ -363,9 +363,9 @@ return array(
                 ),
                 'query_create_filter' => 'user_album',
             ),
-            'RollNApi\\V1\\Rest\\Loop\\LoopResource' => array(
+            'RollNApi\\V1\\Rest\\TestLoop\\TestLoopResource' => array(
                 'object_manager' => 'doctrine.entitymanager.orm_default',
-                'hydrator' => 'RollNApi\\V1\\Rest\\Loop\\LoopHydrator',
+                'hydrator' => 'RollNApi\\V1\\Rest\\TestLoop\\TestLoopHydrator',
             ),
             'RollNApi\\V1\\Rest\\Performer\\PerformerResource' => array(
                 'object_manager' => 'doctrine.entitymanager.orm_default',
@@ -403,8 +403,8 @@ return array(
                 ),
             ),
         ),
-        'RollNApi\\V1\\Rest\\Loop\\LoopHydrator' => array(
-            'entity_class' => 'RollNApi\\Entity\\Loop',
+        'RollNApi\\V1\\Rest\\TestLoop\\TestLoopHydrator' => array(
+            'entity_class' => 'RollNApi\\Entity\\TestLoop',
             'object_manager' => 'doctrine.entitymanager.orm_default',
             'by_value' => true,
             'strategies' => array(),

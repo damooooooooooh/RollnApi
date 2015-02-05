@@ -9,7 +9,8 @@ return array(
     ),
     'data-fixture' => array(
         'RollNApi_ReadOnly_fixture' => __DIR__ . '/../src/RollNApi/Fixture/ReadOnly',
-        'RollNApi_Root_fixture' => __DIR__ . '/../src/RollNApi/Fixture/Root',
+# add to local.php to install root access
+#        'RollNApi_Root_fixture' => __DIR__ . '/../src/RollNApi/Fixture/Root',
     ),
     'doctrine' => array(
         'driver' => array(

@@ -60,8 +60,9 @@
         <many-to-many-field from="performer_id" to="id"/>
       </many-to-many-entity>
     </many-to-many>
-    <comment caption="Loop Entity" description="Used for testing infinite recursion and maximum depth." uuid="d0e7e2ac-e586-4797-9774-9bf40a19e40f"/>
+    <comment caption="TestLoop Entity" description="Used for testing infinite recursion and maximum depth." uuid="d0e7e2ac-e586-4797-9774-9bf40a19e40f"/>
     <comment caption="UserAlbum Entity" description="This represents a physical copy of an album which is owned by a user." uuid="1acda674-bd80-4485-9800-08e2b6af231b"/>
+    <comment caption="Performer" description="The Performer is included to showcase a many to many relationship with Album." uuid="d3fa0c6a-2ecd-4149-ac03-7cecfc4fff82"/>
     <orm-attributes>
       <attribute name="namespace">RollNApi\Entity</attribute>
     </orm-attributes>
@@ -84,7 +85,7 @@
     <association uuid="31b3942a-b34a-4495-b4c5-cbbc9fb078fc" caption1-position-x="0" caption1-position-y="0" center-position-x="0" center-position-y="0" color="4288059030"/>
     <association uuid="3efa4b07-67d5-48a1-94e8-69ad2a5bc60e" color="4288059030"/>
     <many-to-many-association-entity uuid="438b279b-99ed-4a90-9352-79845961ace6" split="1"/>
-    <module uuid="4da0d953-1fc5-4f70-adde-196a93c9b89b" bg-color="4294961622" position-x="23" position-y="-9" size-x="0" size-x2="465" size-y="0" size-y2="686"/>
+    <module uuid="4da0d953-1fc5-4f70-adde-196a93c9b89b" bg-color="4294959018" position-x="23" position-y="-9" size-x="0" size-x2="465" size-y="0" size-y2="686"/>
     <entity uuid="4f5f9113-1ca7-472d-ba02-7b178329ced8" bg-color="4294967295" hdr-color="4292006610" position-x="173" position-y="350" size-x="0" size-x2="127" size-y="0" size-y2="60"/>
     <many-to-many-association uuid="609e9b50-11d4-4ba4-8e4e-37a0286c0358" color="4288059030"/>
     <entity uuid="654eac84-7c6d-4280-9138-1658291dfb7e" bg-color="4294967295" hdr-color="4292006610" position-x="24" position-y="253" size-x="0" size-x2="148" size-y="0" size-y2="60"/>
@@ -103,9 +104,10 @@
     <entity uuid="b0bf79e1-6690-4e50-85c9-06675fe76655" bg-color="4294967295" hdr-color="4292006610" position-x="54" position-y="48" size-x="0" size-x2="20" size-y="0" size-y2="20"/>
     <entity uuid="b6562bcc-4fca-413e-a560-91da4d75dc9f" bg-color="4294967295" hdr-color="4292006610" position-x="50" position-y="126" size-x="0" size-x2="134" size-y="0" size-y2="87"/>
     <project uuid="b7638313-3ca8-4389-9163-d2bb1c15f725" size-x="0" size-x2="1626" size-y="59" size-y2="724"/>
-    <comment uuid="d0e7e2ac-e586-4797-9774-9bf40a19e40f" bg-color="4294967264" position-x="38" position-y="377" size-x="0" size-x2="178" size-y="0" size-y2="49" txt-color="4278190080"/>
+    <comment uuid="d0e7e2ac-e586-4797-9774-9bf40a19e40f" bg-color="4294967264" position-x="34" position-y="375" size-x="0" size-x2="210" size-y="0" size-y2="48" txt-color="4278190080"/>
     <association uuid="d1085ed0-2c0a-47c6-bfc6-cde3b25dd97e" caption1-position-x="0" caption1-position-y="0" center-position-x="0" center-position-y="0" color="4288059030"/>
     <entity uuid="d25ad9b3-1751-49e7-901d-a92fae42a8b2" bg-color="4294967295" hdr-color="4292006610" position-x="23" position-y="90" size-x="0" size-x2="127" size-y="0" size-y2="60"/>
+    <comment uuid="d3fa0c6a-2ecd-4149-ac03-7cecfc4fff82" bg-color="4294967264" position-x="163" position-y="250" size-x="0" size-x2="168" size-y="16" size-y2="40" txt-color="4278190080"/>
     <many-to-many-association-entity uuid="d69ad79d-983f-4cda-905f-1e084aefaff1" center-position-x="0" center-position-y="0"/>
     <many-to-many-association uuid="d6c88e38-48c1-43d7-b5e9-b6902ee48e7c" color="4288059030"/>
     <association uuid="d9c8b226-5b7a-4991-adb8-f01509ffdc87" color="4288059030"/>

@@ -28,6 +28,10 @@
     "repositories": [
         {
             "type": "git",
+            "url": "https://github.com/stefanotorresi/zf-hal.git"
+        },
+        {
+            "type": "git",
             "url": "https://github.com/TomHAnderson/zf-oauth2.git"
         }
     ],
@@ -39,6 +43,7 @@
         "zfcampus/zf-development-mode": "~2.0",
         "doctrine/doctrine-orm-module": "0.*",
         "zfcampus/zf-oauth2": "dev-master#f1f877481c4db28fb1c5d7bddca270afa0efd363",
+        "zfcampus/zf-hal": "dev-master#8336cd68243b33b7d8a8fedaa96ceeb8b402ce3f",
         "zfcampus/zf-apigility-doctrine": "0.3.*",
         "zf-commons/zfc-user-doctrine-orm": "~1.0",
         "hounddog/doctrine-data-fixture-module": "0.0.*",

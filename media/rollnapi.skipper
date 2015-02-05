@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<skipper version="3.0.0.1104" name="Roll'n API by Tom Anderson" mvc="Without MVC" orm="Doctrine2" uuid="b7638313-3ca8-4389-9163-d2bb1c15f725">
+<skipper version="3.0.2.1162" name="Roll'n API by Tom Anderson" mvc="Without MVC" orm="Doctrine2" uuid="b7638313-3ca8-4389-9163-d2bb1c15f725">
   <module name="RollNApi" import-format="Doctrine2Xml" import-path="../module/RollNApi/config/xml" uuid="4da0d953-1fc5-4f70-adde-196a93c9b89b">
     <entity name="Artist" uuid="b0bf79e1-6690-4e50-85c9-06675fe76655">
       <field name="id" type="integer" required="true" unique="true" primary="true" auto-increment="true" uuid="50d42ccd-c061-493c-9fa6-e66611c699c1"/>
@@ -10,7 +10,7 @@
       <field name="name" type="string" uuid="a9c00a4a-ad23-4c91-bee1-99f01bdf7572"/>
       <field name="artist_id" type="integer" uuid="fe3468ea-8a87-4291-bc0c-d0fddf409d26"/>
     </entity>
-    <association from="Album" to="Artist" owner-alias="album" inverse-alias="artist" uuid="d1085ed0-2c0a-47c6-bfc6-cde3b25dd97e">
+    <association from="Album" to="Artist" owner-alias="album" inverse-alias="artist" many-owner="true" many-inverse="false" uuid="d1085ed0-2c0a-47c6-bfc6-cde3b25dd97e">
       <association-field from="artist_id" to="id"/>
     </association>
     <entity name="UserAlbum" uuid="0dca3ab1-9369-4587-a56e-4449d458862f">
@@ -19,10 +19,10 @@
       <field name="user_id" type="integer" uuid="563b3464-cb8a-4efe-a61e-6fdb676a63c6"/>
       <field name="album_id" type="integer" uuid="555e9473-b7e0-4516-a8c8-00845af0723d"/>
     </entity>
-    <association from="UserAlbum" to="User" owner-alias="userAlbum" inverse-alias="user" uuid="70498bb7-43ce-44bf-bb94-7f402a826cbb">
+    <association from="UserAlbum" to="User" owner-alias="userAlbum" inverse-alias="user" many-owner="true" many-inverse="false" uuid="70498bb7-43ce-44bf-bb94-7f402a826cbb">
       <association-field from="user_id" to="id"/>
     </association>
-    <association from="UserAlbum" to="Album" owner-alias="userAlbum" inverse-alias="album" uuid="31b3942a-b34a-4495-b4c5-cbbc9fb078fc">
+    <association from="UserAlbum" to="Album" owner-alias="userAlbum" inverse-alias="album" many-owner="true" many-inverse="false" uuid="31b3942a-b34a-4495-b4c5-cbbc9fb078fc">
       <association-field from="album_id" to="id"/>
     </association>
     <entity name="User" uuid="7103834d-0fe7-4345-9f6e-0e5ef1f651a4">
@@ -41,9 +41,25 @@
       <field name="loop_id" type="integer" uuid="01c77eb5-6794-43ba-ac31-178307dd5431"/>
       <field name="name" uuid="9043bc09-d882-4504-a842-a726b13aa030"/>
     </entity>
-    <association from="Loop" to="Loop" owner-alias="childLoop" inverse-alias="parentLoop" uuid="79cd3727-cf12-4c62-953c-e2ab7d5bf5b7">
+    <association from="Loop" to="Loop" owner-alias="childLoop" inverse-alias="parentLoop" many-owner="true" many-inverse="false" uuid="79cd3727-cf12-4c62-953c-e2ab7d5bf5b7">
       <association-field from="loop_id" to="id"/>
     </association>
+    <entity name="Performer" uuid="2347113c-9424-4c3d-bd63-1f1752a8db33">
+      <field name="id" type="integer" required="true" unique="true" primary="true" auto-increment="true" uuid="920f8365-9d9c-451c-8ffd-a60f0046435c"/>
+      <field name="name" type="string" uuid="93572182-1d1d-41e4-9677-ad6b01bba34d"/>
+    </entity>
+    <entity name="PerformerToAlbum" uuid="a6af3ffb-5ba3-4bc7-b628-fa76e660fe51">
+      <field name="performer_id" type="integer" required="true" primary="true" uuid="b1a5ad5e-1250-4437-bc9f-04c004af6765"/>
+      <field name="album_id" type="integer" required="true" primary="true" uuid="c2020403-f8d8-4581-ac2b-cb0d39257f2c"/>
+    </entity>
+    <many-to-many mn-entity="PerformerToAlbum" uuid="e08624ad-e04a-497a-918b-cd50c9eae2b2">
+      <many-to-many-entity name="Album" owning-side="true" alias="album" uuid="b19c7813-a7e7-40c5-b73f-eb0282570fce">
+        <many-to-many-field from="album_id" to="id"/>
+      </many-to-many-entity>
+      <many-to-many-entity name="Performer" owning-side="false" alias="performer" uuid="7e7adb50-1716-449d-95df-9cb929411f5d">
+        <many-to-many-field from="performer_id" to="id"/>
+      </many-to-many-entity>
+    </many-to-many>
     <comment caption="Loop Entity" description="Used for testing infinite recursion and maximum depth." uuid="d0e7e2ac-e586-4797-9774-9bf40a19e40f"/>
     <comment caption="UserAlbum Entity" description="This represents a physical copy of an album which is owned by a user." uuid="1acda674-bd80-4485-9800-08e2b6af231b"/>
     <orm-attributes>
@@ -62,6 +78,7 @@
     <entity uuid="1b40f6a9-e21a-49d3-8d44-604e36d28d35" bg-color="4294967295" hdr-color="4292006610" position-x="60" position-y="124" size-x="0" size-x2="127" size-y="0" size-y2="101"/>
     <many-to-many-association uuid="1d7e8cae-9456-4602-a095-f2048b9303c4" color="4288059030"/>
     <many-to-many-association-entity uuid="216d4d0a-a391-4879-ad9e-d195d818dc27" split="1"/>
+    <entity uuid="2347113c-9424-4c3d-bd63-1f1752a8db33" bg-color="4294967295" hdr-color="4292006610" position-x="201" position-y="300" size-x="0" size-x2="77" size-y="0" size-y2="45"/>
     <association uuid="2664c472-a222-4480-80e6-34943b78930f" color="4288059030"/>
     <region uuid="2842966b-796c-48f0-920e-74b0fc40ec24" bg-color="4293194728" position-x="422" position-y="121" size-x="0" size-x2="225" size-y="0" size-y2="405"/>
     <association uuid="31b3942a-b34a-4495-b4c5-cbbc9fb078fc" caption1-position-x="0" caption1-position-y="0" center-position-x="0" center-position-y="0" color="4288059030"/>
@@ -74,7 +91,7 @@
     <comment uuid="664daa50-d4a6-4d82-a35f-5eb5e2e8e7ca" bg-color="4294967264" position-x="39" position-y="5" size-x="0" size-x2="264" size-y="0" size-y2="72" txt-color="4278190080"/>
     <association uuid="6b2ceec2-f65b-4944-be20-613a797e5829" color="4288059030"/>
     <association uuid="70498bb7-43ce-44bf-bb94-7f402a826cbb" caption1-position-x="0" caption1-position-y="0" center-position-x="0" center-position-y="0" color="4288059030"/>
-    <entity uuid="7103834d-0fe7-4345-9f6e-0e5ef1f651a4" bg-color="4294967295" hdr-color="4292006610" position-x="213" position-y="252" size-x="0" size-x2="106" size-y="0" size-y2="101"/>
+    <entity uuid="7103834d-0fe7-4345-9f6e-0e5ef1f651a4" bg-color="4294967295" hdr-color="4292006610" position-x="344" position-y="235" size-x="0" size-x2="106" size-y="0" size-y2="101"/>
     <many-to-many-association uuid="7563f43f-925d-4df3-bfd3-d2bf1855a0ca" color="4288059030"/>
     <association uuid="79cd3727-cf12-4c62-953c-e2ab7d5bf5b7" caption1-position-x="0" caption1-position-y="0" center-position-x="0" center-position-y="-20" color="4288059030"/>
     <entity uuid="8c75fc92-0e0a-43ed-b5dc-5859aba057ae" bg-color="4294967295" hdr-color="4292006610" position-x="72" position-y="306" size-x="0" size-x2="106" size-y="0" size-y2="73"/>
@@ -82,6 +99,7 @@
     <region uuid="98a49ed5-e644-4a4e-9b59-d5421643572a" bg-color="4292931823" position-x="675" position-y="122" size-x="0" size-x2="319" size-y="0" size-y2="424"/>
     <entity uuid="9c143447-a1f4-4187-a5f9-45e768f78ebb" bg-color="4294967295" hdr-color="4292006610" position-x="52" position-y="41" size-x="0" size-x2="93" size-y="0" size-y2="73"/>
     <association uuid="9daca6d8-8f09-4f97-bbfd-6db05bdf3e58" color="4288059030"/>
+    <entity uuid="a6af3ffb-5ba3-4bc7-b628-fa76e660fe51" bg-color="4294967295" hdr-color="4292006610" position-x="36" position-y="292" size-x="0" size-x2="112" size-y="0" size-y2="60"/>
     <entity uuid="b0bf79e1-6690-4e50-85c9-06675fe76655" bg-color="4294967295" hdr-color="4292006610" position-x="54" position-y="48" size-x="0" size-x2="20" size-y="0" size-y2="20"/>
     <entity uuid="b6562bcc-4fca-413e-a560-91da4d75dc9f" bg-color="4294967295" hdr-color="4292006610" position-x="50" position-y="126" size-x="0" size-x2="134" size-y="0" size-y2="87"/>
     <project uuid="b7638313-3ca8-4389-9163-d2bb1c15f725" size-x="0" size-x2="1626" size-y="59" size-y2="724"/>
@@ -91,6 +109,7 @@
     <many-to-many-association-entity uuid="d69ad79d-983f-4cda-905f-1e084aefaff1" center-position-x="0" center-position-y="0"/>
     <many-to-many-association uuid="d6c88e38-48c1-43d7-b5e9-b6902ee48e7c" color="4288059030"/>
     <association uuid="d9c8b226-5b7a-4991-adb8-f01509ffdc87" color="4288059030"/>
+    <many-to-many-association uuid="e08624ad-e04a-497a-918b-cd50c9eae2b2" color="4288059030"/>
     <module uuid="e33a902b-9096-46f4-81af-cb8fa813a736" bg-color="4287552497" position-x="547" position-y="23" size-x="30" size-x2="1020" size-y="32" size-y2="651"/>
     <entity uuid="eee19835-8e87-42a7-965d-0dd94e1e1f5e" bg-color="4294967295" hdr-color="4292006610" position-x="134" position-y="454" size-x="0" size-x2="20" size-y="0" size-y2="20"/>
     <entity uuid="f42aa952-941d-4cec-adaf-5df5bc023867" bg-color="4294967295" hdr-color="4292006610" position-x="58" position-y="357" size-x="0" size-x2="96" size-y="0" size-y2="101"/>

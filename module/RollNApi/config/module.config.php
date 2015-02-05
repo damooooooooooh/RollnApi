@@ -3,10 +3,13 @@ return array(
     'service_manager' => array(
         'invokables' => array(
             'hydrator_filter_exclude_user' => 'RollNApi\\Hydrator\\Filter\\ExcludeUser',
+            'RollNApi\\Hydrator\\Strategy\\Performer\\Album' =>
+                'RollNApi\\Hydrator\\Strategy\\Performer\\Album',
         ),
     ),
     'data-fixture' => array(
         'RollNApi_ReadOnly_fixture' => __DIR__ . '/../src/RollNApi/Fixture/ReadOnly',
+        'RollNApi_Root_fixture' => __DIR__ . '/../src/RollNApi/Fixture/Root',
     ),
     'doctrine' => array(
         'driver' => array(
@@ -77,6 +80,15 @@ return array(
                     ),
                 ),
             ),
+            'roll-n-api.rest.doctrine.performer' => array(
+                'type' => 'Segment',
+                'options' => array(
+                    'route' => '/api/performer[/:performer_id]',
+                    'defaults' => array(
+                        'controller' => 'RollNApi\\V1\\Rest\\Performer\\Controller',
+                    ),
+                ),
+            ),
         ),
     ),
     'zf-versioning' => array(
@@ -85,6 +97,7 @@ return array(
             1 => 'roll-n-api.rest.doctrine.album',
             2 => 'roll-n-api.rest.doctrine.user-album',
             3 => 'roll-n-api.rest.doctrine.loop',
+            4 => 'roll-n-api.rest.doctrine.performer',
         ),
     ),
     'zf-rest' => array(
@@ -177,6 +190,28 @@ return array(
             'entity_class' => 'RollNApi\\Entity\\Loop',
             'collection_class' => 'RollNApi\\V1\\Rest\\Loop\\LoopCollection',
         ),
+        'RollNApi\\V1\\Rest\\Performer\\Controller' => array(
+            'listener' => 'RollNApi\\V1\\Rest\\Performer\\PerformerResource',
+            'route_name' => 'roll-n-api.rest.doctrine.performer',
+            'route_identifier_name' => 'performer_id',
+            'entity_identifier_name' => 'id',
+            'collection_name' => 'performer',
+            'entity_http_methods' => array(
+                0 => 'GET',
+                1 => 'PATCH',
+                2 => 'PUT',
+                3 => 'DELETE',
+            ),
+            'collection_http_methods' => array(
+                0 => 'GET',
+                1 => 'POST',
+            ),
+            'collection_query_whitelist' => array(),
+            'page_size' => 25,
+            'page_size_param' => null,
+            'entity_class' => 'RollNApi\\Entity\\Performer',
+            'collection_class' => 'RollNApi\\V1\\Rest\\Performer\\PerformerCollection',
+        ),
     ),
     'zf-content-negotiation' => array(
         'controllers' => array(
@@ -184,6 +219,7 @@ return array(
             'RollNApi\\V1\\Rest\\Album\\Controller' => 'HalJson',
             'RollNApi\\V1\\Rest\\UserAlbum\\Controller' => 'HalJson',
             'RollNApi\\V1\\Rest\\Loop\\Controller' => 'HalJson',
+            'RollNApi\\V1\\Rest\\Performer\\Controller' => 'HalJson',
         ),
         'accept-whitelist' => array(
             'RollNApi\\V1\\Rest\\Artist\\Controller' => array(
@@ -206,6 +242,11 @@ return array(
                 1 => 'application/hal+json',
                 2 => 'application/json',
             ),
+            'RollNApi\\V1\\Rest\\Performer\\Controller' => array(
+                0 => 'application/vnd.roll-n-api.v1+json',
+                1 => 'application/hal+json',
+                2 => 'application/json',
+            ),
         ),
         'content-type-whitelist' => array(
             'RollNApi\\V1\\Rest\\Artist\\Controller' => array(
@@ -224,6 +265,10 @@ return array(
                 0 => 'application/vnd.roll-n-api.v1+json',
                 1 => 'application/json',
             ),
+            'RollNApi\\V1\\Rest\\Performer\\Controller' => array(
+                0 => 'application/vnd.roll-n-api.v1+json',
+                1 => 'application/json',
+            ),
         ),
     ),
     'zf-hal' => array(
@@ -233,11 +278,13 @@ return array(
                 'entity_identifier_name' => 'id',
                 'route_name' => 'roll-n-api.rest.doctrine.artist',
                 'hydrator' => 'RollNApi\\V1\\Rest\\Artist\\ArtistHydrator',
+                'max_depth' => 2,
             ),
             'RollNApi\\V1\\Rest\\Artist\\ArtistCollection' => array(
                 'entity_identifier_name' => 'id',
                 'route_name' => 'roll-n-api.rest.doctrine.artist',
                 'is_collection' => true,
+                'max_depth' => 2,
             ),
             'RollNApi\\Entity\\Album' => array(
                 'route_identifier_name' => 'album_id',
@@ -274,6 +321,17 @@ return array(
                 'is_collection' => true,
                 'max_depth' => '37',
             ),
+            'RollNApi\\Entity\\Performer' => array(
+                'route_identifier_name' => 'performer_id',
+                'entity_identifier_name' => 'id',
+                'route_name' => 'roll-n-api.rest.doctrine.performer',
+                'hydrator' => 'RollNApi\\V1\\Rest\\Performer\\PerformerHydrator',
+            ),
+            'RollNApi\\V1\\Rest\\Performer\\PerformerCollection' => array(
+                'entity_identifier_name' => 'id',
+                'route_name' => 'roll-n-api.rest.doctrine.performer',
+                'is_collection' => true,
+            ),
         ),
     ),
     'zf-apigility' => array(
@@ -309,6 +367,10 @@ return array(
                 'object_manager' => 'doctrine.entitymanager.orm_default',
                 'hydrator' => 'RollNApi\\V1\\Rest\\Loop\\LoopHydrator',
             ),
+            'RollNApi\\V1\\Rest\\Performer\\PerformerResource' => array(
+                'object_manager' => 'doctrine.entitymanager.orm_default',
+                'hydrator' => 'RollNApi\\V1\\Rest\\Performer\\PerformerHydrator',
+            ),
         ),
     ),
     'doctrine-hydrator' => array(
@@ -316,7 +378,9 @@ return array(
             'entity_class' => 'RollNApi\\Entity\\Artist',
             'object_manager' => 'doctrine.entitymanager.orm_default',
             'by_value' => true,
-            'strategies' => array(),
+            'strategies' => array(
+                'album' => 'ZF\\Apigility\\Doctrine\\Server\\Hydrator\\Strategy\\CollectionExtract',
+            ),
             'use_generated_hydrator' => true,
         ),
         'RollNApi\\V1\\Rest\\Album\\AlbumHydrator' => array(
@@ -345,6 +409,15 @@ return array(
             'by_value' => true,
             'strategies' => array(),
             'use_generated_hydrator' => true,
+        ),
+        'RollNApi\\V1\\Rest\\Performer\\PerformerHydrator' => array(
+            'entity_class' => 'RollNApi\\Entity\\Performer',
+            'object_manager' => 'doctrine.entitymanager.orm_default',
+            'by_value' => true,
+            'strategies' => array(
+                'album' => 'RollnApi\\Hydrator\\Strategy\\Performer\\Album',
+            ),
+            'use_generated_hydrator' => false,
         ),
     ),
 );

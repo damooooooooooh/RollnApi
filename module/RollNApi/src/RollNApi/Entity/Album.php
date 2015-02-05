@@ -125,4 +125,42 @@ class Album
     {
         return $this->artist;
     }
+    /**
+     * @var \Doctrine\Common\Collections\Collection
+     */
+    private $performer;
+
+
+    /**
+     * Add performer
+     *
+     * @param \RollNApi\Entity\Performer $performer
+     * @return Album
+     */
+    public function addPerformer(\RollNApi\Entity\Performer $performer)
+    {
+        $this->performer[] = $performer;
+
+        return $this;
+    }
+
+    /**
+     * Remove performer
+     *
+     * @param \RollNApi\Entity\Performer $performer
+     */
+    public function removePerformer(\RollNApi\Entity\Performer $performer)
+    {
+        $this->performer->removeElement($performer);
+    }
+
+    /**
+     * Get performer
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getPerformer()
+    {
+        return $this->performer;
+    }
 }

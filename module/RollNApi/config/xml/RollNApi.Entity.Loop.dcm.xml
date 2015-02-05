@@ -4,6 +4,7 @@
     <id name="id" type="integer">
       <generator strategy="AUTO"/>
     </id>
+    <field name="name" nullable="true"/>
     <many-to-one field="parentLoop" target-entity="RollNApi\Entity\Loop" inversed-by="childLoop">
       <join-columns>
         <join-column name="loop_id" referenced-column-name="id"/>

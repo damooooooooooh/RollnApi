@@ -11,5 +11,15 @@
       </join-columns>
     </many-to-one>
     <one-to-many field="userAlbum" target-entity="RollNApi\Entity\UserAlbum" mapped-by="album"/>
+    <many-to-many field="performer" target-entity="RollNApi\Entity\Performer" inversed-by="album">
+      <join-table name="PerformerToAlbum">
+        <join-columns>
+          <join-column name="album_id" referenced-column-name="id" nullable="false"/>
+        </join-columns>
+        <inverse-join-columns>
+          <join-column name="performer_id" referenced-column-name="id" nullable="false"/>
+        </inverse-join-columns>
+      </join-table>
+    </many-to-many>
   </entity>
 </doctrine-mapping>

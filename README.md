@@ -11,7 +11,7 @@ The [Skipper](http://www.skipper18.com) diagram is recommend: [rollnapi.skipper]
 If you do not have Skipper see the PDF: https://github.com/TomHAnderson/RollnApi/blob/master/media/rollnapi.pdf
 
 
-Doctrine OAuth2 API with Apigility 
+Doctrine OAuth2 API with Apigility
 ----------------------------------
 
 This is written for PHP 5.3 but these instructions assume 5.4 or greater.
@@ -45,3 +45,5 @@ A FetchAll Query Provider for UserAlbum is used so filters may be applied to a G
 A Query Create Filter is used for UserAlbum so the authenticated user is assigned to any new UserAlbum.
 
 A Hydrator Filter is used for UserAlbum so the assigned user entity is not included in results.
+
+A Hydrator Strategy is used for the many to many relationship of Performer to Album.
